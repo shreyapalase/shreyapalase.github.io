@@ -120,39 +120,13 @@ h2 {
 ========================= */
 .quantum-symbols {
   position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
+  top: 20px;
+  right: 20px;
 
+  font-size: 28px;
+  color: rgba(56,189,248,0.6);
 
-/* =========================
-   FORCE QUANTUM SYMBOLS VISIBILITY
-========================= */
+  z-index: 9999;
 
-.quantum-symbols {
-  position: fixed;
-  inset: 0;
-  z-index: 1; /* IMPORTANT */
   pointer-events: none;
 }
-
-/* make sure UI is above symbols */
-.sidebar,
-.content {
-  position: relative;
-  z-index: 2;
-}
-
-.quantum-symbols span {
-  position: absolute;
-  font-size: 40px;
-  color: rgba(56, 189, 248, 0.35); /* cyan visible */
-}
-
-/* positions */
-.q1 { top: 10%; left: 70%; }
-.q2 { top: 60%; left: 80%; }
-.q3 { top: 40%; left: 75%; }
-.q4 { top: 80%; left: 60%; }
-.q5 { top: 25%; left: 85%; }
