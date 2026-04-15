@@ -1,161 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Your Name | Quantum Computing Enthusiast</title>
-
-  <!-- CSS -->
-  <link rel="stylesheet" href="style.css">
-
-  <!-- ICON LIBRARY -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-
 <body>
 
-  <!-- 🌌 HERO IMAGE (NOW CORRECT PLACE) -->
-  <div class="hero">
-    <img src="https://images.unsplash.com/photo-1581090700227-1e8e0f4f2a8d?auto=format&fit=crop&w=1200&q=80"
-      alt="Quantum Background">
-  </div>
+<!-- 🌌 CANVAS BACKGROUND (REAL PARTICLES) -->
+<canvas id="quantumCanvas"></canvas>
 
-  <div class="container">
+<!-- ⚛️ CENTER QUBIT SVG -->
+<svg class="qubit-bg" viewBox="0 0 200 200">
+  <circle cx="100" cy="100" r="80" stroke="#00fff7" stroke-width="2" fill="none"/>
+  <circle cx="100" cy="100" r="50" stroke="#ff00ff" stroke-width="2" fill="none"/>
+  <line x1="100" y1="20" x2="100" y2="180" stroke="#00fff7"/>
+  <line x1="20" y1="100" x2="180" y2="100" stroke="#ff00ff"/>
+</svg>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
+<div class="container">
 
-      <h1>⚛ Your Name</h1>
-      <h3>Quantum Computing Enthusiast</h3>
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h1>⚛ Your Name</h1>
+    <h3>Quantum Computing Enthusiast</h3>
 
-      <p class="intro">
-        Exploring Quantum Computing, QML, Quantum Cryptography & next-gen computation systems.
-      </p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#achievements">Achievements</a>
+      <a href="#contact">Contact</a>
+    </nav>
 
-      <!-- NAVIGATION -->
-      <nav>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#achievements">Achievements</a>
-        <a href="#contact">Contact</a>
-      </nav>
+    <div class="socials">
+      <a href="#"><i class="fab fa-github"></i> GitHub</a>
+      <a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a>
+      <a href="#"><i class="fas fa-envelope"></i> Email</a>
+    </div>
+  </aside>
 
-      <!-- SOCIAL ICONS -->
-      <div class="socials">
+  <!-- MAIN -->
+  <main class="content">
 
-        <a href="https://github.com/yourusername" target="_blank">
-          <i class="fab fa-github"></i> GitHub
-        </a>
+    <section id="about">
+      <h2>NASA-LEVEL QUANTUM UI</h2>
+      <p>Quantum computing simulation interface with particle physics visualization.</p>
+    </section>
 
-        <a href="https://linkedin.com/in/yourprofile" target="_blank">
-          <i class="fab fa-linkedin"></i> LinkedIn
-        </a>
+  </main>
 
-        <a href="mailto:your@email.com">
-          <i class="fas fa-envelope"></i> Email
-        </a>
+</div>
 
-      </div>
-
-    </aside>
-
-    <!-- MAIN CONTENT -->
-    <main class="content">
-
-      <!-- ABOUT -->
-      <section id="about">
-        <h2>🧠 About Me</h2>
-
-        <p>
-          I am a passionate Quantum Computing enthusiast building my foundation in physics,
-          mathematics, and computer science. I explore how quantum systems can solve problems
-          beyond classical computation.
-        </p>
-
-        <p>
-          My focus areas include quantum algorithms, quantum circuits, superposition,
-          entanglement, and quantum machine learning using Python and Qiskit.
-        </p>
-
-        <p>
-          I actively work on small quantum simulations and continuously improve my understanding
-          of linear algebra, probability theory, and computational models used in quantum systems.
-        </p>
-
-        <p>
-          My goal is to become a quantum software developer/researcher contributing to
-          advancements in quantum technologies.
-        </p>
-
-      </section>
-
-      <!-- PROJECTS -->
-      <section id="projects">
-        <h2>💻 Projects</h2>
-
-        <div class="card">
-          <h3>⚛ Quantum Circuit Simulator</h3>
-          <p>Built using Python + Qiskit to simulate quantum logic circuits.</p>
-          <a href="https://github.com/yourusername/quantum-simulator" target="_blank">🔗 View Project</a>
-        </div>
-
-        <div class="card">
-          <h3>🔍 Grover Algorithm Demo</h3>
-          <p>Implementation of quantum search algorithm using Qiskit.</p>
-          <a href="https://github.com/yourusername/grover-demo" target="_blank">🔗 View Project</a>
-        </div>
-
-      </section>
-
-      <!-- CERTIFICATIONS -->
-      <section id="certifications">
-        <h2>🎓 Certifications</h2>
-
-        <ul>
-          <li>IBM Quantum Course -
-            <a href="#">View Certificate</a>
-          </li>
-
-          <li>Python for Data Science -
-            <a href="#">View Certificate</a>
-          </li>
-
-          <li>Linear Algebra for Quantum Computing -
-            <a href="#">View Certificate</a>
-          </li>
-        </ul>
-
-      </section>
-
-      <!-- ACHIEVEMENTS -->
-      <section id="achievements">
-        <h2>🏆 Achievements</h2>
-
-        <ul>
-          <li>Built first quantum circuit simulator</li>
-          <li>Implemented Grover’s Algorithm project</li>
-          <li>Completed multiple quantum computing courses</li>
-        </ul>
-
-      </section>
-
-      <!-- CONTACT -->
-      <section id="contact">
-        <h2>📩 Contact</h2>
-
-        <p>
-          Email:
-          <a href="mailto:your@email.com">your@email.com</a>
-        </p>
-
-      </section>
-
-    </main>
-
-  </div>
+<!-- JS -->
+<script src="script.js"></script>
 
 </body>
-</html>
