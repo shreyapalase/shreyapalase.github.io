@@ -15,6 +15,28 @@ body {
 }
 
 /* QUANTUM PARTICLE BACKGROUND */
+body::before {
+  content: "⚛ ᚠ ⟡ ⟢ ⟣ ⚛ ⟡ 𝛙 𝛌 𝜓";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 0;
+  font-size: 20px;
+  color: rgba(100,255,218,0.08);
+  white-space: nowrap;
+  animation: floatSymbols 25s linear infinite;
+  z-index: -1;
+}
+
+@keyframes floatSymbols {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-200px, -200px);
+  }
+}
 body::before,
 body::after {
   content: "";
@@ -55,6 +77,17 @@ body::after {
   100% {
     transform: translate(-50px, -50px);
   }
+}
+body::after {
+  content: "";
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(100,255,218,0.2) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: moveParticles 20s linear infinite;
+  opacity: 0.2;
+  z-index: -1;
 }
 
 /* CONTAINER */
@@ -157,4 +190,23 @@ a {
     margin-left: 0;
     width: 100%;
   }
+}
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  color: #8892b0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.socials a i {
+  color: #64ffda;
+  font-size: 16px;
+}
+
+.socials a:hover {
+  color: #64ffda;
+  transform: translateX(5px);
 }
