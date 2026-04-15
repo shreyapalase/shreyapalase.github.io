@@ -1,87 +1,94 @@
+// ===============================
+// BASIC LOADING ANIMATION
+// ===============================
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Quantum Portfolio Loaded ⚛️");
+});
 
-/* =========================
-   🌌 CANVAS SETUP
-========================= */
-const canvas = document.getElementById("quantumCanvas");
-const ctx = canvas.getContext("2d");
+// ===============================
+// SMOOTH SCROLL FOR NAV LINKS
+// ===============================
+document.querySelectorAll("nav a").forEach(anchor => {
+  anchor.addEventListener("click", function (e) {
+    e.preventDefault();
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+    const targetId = this.getAttribute("href");
+    const targetSection = document.querySelector(targetId);
 
-let particles = [];
-
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width;
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 1.5;
-    this.vy = (Math.random() - 0.5) * 1.5;
-    this.size = Math.random() * 2;
-  }
-
-  move() {
-    this.x += this.vx;
-    this.y += this.vy;
-
-    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  }
-
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = "#00fff7";
-    ctx.fill();
-  }
-}
-
-function init() {
-  for (let i = 0; i < 120; i++) {
-    particles.push(new Particle());
-  }
-}
-
-function connect() {
-  for (let a = 0; a < particles.length; a++) {
-    for (let b = a; b < particles.length; b++) {
-      let dx = particles[a].x - particles[b].x;
-      let dy = particles[a].y - particles[b].y;
-      let dist = Math.sqrt(dx * dx + dy * dy);
-
-      if (dist < 120) {
-        ctx.strokeStyle = "rgba(0,255,247,0.15)";
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(particles[a].x, particles[a].y);
-        ctx.lineTo(particles[b].x, particles[b].y);
-        ctx.stroke();
-      }
+    if (targetSection) {
+      targetSection.scrollIntoView({
+        behavior: "smooth"
+      });
     }
-  }
-}
+  });
+});
 
-function animate() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+// ===============================
+// HOVER GLOW EFFECT ON CARDS
+// ===============================
+const cards = document.querySelectorAll(".card");
 
-  particles.forEach(p => {
-    p.move();
-    p.draw();
+cards.forEach(card => {
+  card.addEventListener("mousemove", (e) => {
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    card.style.background = `
+      radial-gradient(
+        circle at ${x}px ${y}px,
+        rgba(100,255,218,0.15),
+        rgba(10,25,47,0.9)
+      )
+    `;
   });
 
-  connect();
+  card.addEventListener("mouseleave", () => {
+    card.style.background = "#0a192f";
+  });
+});
 
-  requestAnimationFrame(animate);
+// ===============================
+// TYPING EFFECT (TITLE ANIMATION)
+// ===============================
+const title = document.querySelector("h1");
+
+if (title) {
+  const text = title.innerText;
+  title.innerText = "";
+
+  let i = 0;
+
+  function typeEffect() {
+    if (i < text.length) {
+      title.innerText += text.charAt(i);
+      i++;
+      setTimeout(typeEffect, 100);
+    }
+  }
+
+  typeEffect();
 }
 
-init();
-animate();
+// ===============================
+// SCROLL REVEAL EFFECT
+// ===============================
+const sections = document.querySelectorAll("section");
 
-/* =========================
-   🖱️ MOUSE ENERGY EFFECT
-========================= */
-window.addEventListener("mousemove", (e) => {
-  ctx.fillStyle = "#ff00ff";
-  ctx.beginPath();
-  ctx.arc(e.clientX, e.clientY, 4, 0, Math.PI * 2);
-  ctx.fill();
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = 1;
+      entry.target.style.transform = "translateY(0)";
+      entry.target.style.transition = "0.6s ease";
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+sections.forEach(section => {
+  section.style.opacity = 0;
+  section.style.transform = "translateY(30px)";
+  observer.observe(section);
 });
