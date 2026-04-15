@@ -7,45 +7,45 @@
 
   <title>Quantum Computing Portfolio</title>
 
-  <!-- CSS -->
+  <!-- CSS FILE -->
   <link rel="stylesheet" href="style.css">
 
   <!-- ICONS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-  <!-- FONT -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
-<canvas id="quantum-bg"></canvas>
-<div class="container">
-<div class="quantum-symbols">
 
+<!-- ⚛️ QUANTUM BACKGROUND CANVAS -->
+<canvas id="qbg"></canvas>
+
+<!-- ⚛️ QUANTUM SYMBOLS (OPTIONAL VISUAL LAYER) -->
+<div class="quantum-symbols">
   <span class="q1">⚛</span>
   <span class="q2">𝛙</span>
   <span class="q3">⟡</span>
   <span class="q4">⌬</span>
   <span class="q5">⚛</span>
-
 </div>
+
+<!-- ⚛️ LEFT CORNER QUANTUM IMAGE -->
+<div class="quantum-corner-image">
+  <img src="https://images.unsplash.com/photo-1581090700227-1e8e0f4f2a8d?auto=format&fit=crop&w=600&q=80" 
+       alt="Quantum Computer">
+</div>
+
+<div class="container">
 
   <!-- ================= SIDEBAR ================= -->
   <aside class="sidebar">
 
-    <!-- BRAND -->
-    <div class="brand">
-      <i class="fas fa-atom"></i>
-      <h1>My Portfolio</h1>
-    </div>
+    <h1>Quantum AI Lab</h1>
+    <h3>Quantum Computing Student</h3>
 
-    <h3>Your Name</h3>
+    <p>Exploring qubits, quantum algorithms, and future computing systems.</p>
 
-    <p class="role">
-      Quantum Computing Enthusiast
-    </p>
-
-    <!-- NAVIGATION -->
+    <!-- NAV -->
     <nav>
       <a href="#about"><i class="fas fa-user"></i> About</a>
       <a href="#projects"><i class="fas fa-code"></i> Projects</a>
@@ -54,7 +54,7 @@
       <a href="#contact"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
 
-    <!-- SOCIAL LINKS -->
+    <!-- SOCIAL -->
     <div class="socials">
 
       <a href="https://github.com/yourusername" target="_blank">
@@ -78,23 +78,11 @@
 
     <!-- ABOUT -->
     <section id="about">
-      <h2>About Quantum Research</h2>
-
+      <h2>About Quantum Computing</h2>
       <p>
-        I am a Quantum Computing enthusiast focused on quantum algorithms,
-        quantum information systems, and next-generation computing architecture.
+        I am a passionate learner in Quantum Computing, focusing on qubits, quantum circuits,
+        and next-generation computational systems.
       </p>
-
-      <p>
-        I explore qubits, superposition, entanglement, and quantum circuit design
-        using Python and Qiskit.
-      </p>
-
-      <p>
-        My goal is to contribute to real-world quantum computing applications in
-        cryptography, AI, and scientific simulations.
-      </p>
-
     </section>
 
     <!-- PROJECTS -->
@@ -103,17 +91,12 @@
 
       <div class="card">
         <h3>Quantum Circuit Simulator</h3>
-        <p>Built using Python and Qiskit to simulate quantum logic circuits.</p>
+        <p>Built using Python and Qiskit.</p>
       </div>
 
       <div class="card">
-        <h3>Grover’s Algorithm Implementation</h3>
-        <p>Quantum search algorithm simulation using Qiskit.</p>
-      </div>
-
-      <div class="card">
-        <h3>Quantum Teleportation Model</h3>
-        <p>Simulation of quantum communication system.</p>
+        <h3>Grover Algorithm Demo</h3>
+        <p>Quantum search implementation.</p>
       </div>
 
     </section>
@@ -122,17 +105,9 @@
     <section id="certifications">
       <h2>Certifications</h2>
 
-      <div class="card">
-        IBM Quantum Fundamentals
-      </div>
-
-      <div class="card">
-        Python for Scientific Computing
-      </div>
-
-      <div class="card">
-        Linear Algebra for Quantum Systems
-      </div>
+      <div class="card">IBM Quantum Basics</div>
+      <div class="card">Python for Scientific Computing</div>
+      <div class="card">Linear Algebra for Quantum Systems</div>
 
     </section>
 
@@ -140,17 +115,8 @@
     <section id="achievements">
       <h2>Achievements</h2>
 
-      <div class="card">
-        Built first Quantum Circuit Simulator
-      </div>
-
-      <div class="card">
-        Completed Qiskit Training Program
-      </div>
-
-      <div class="card">
-        Developed Grover Algorithm Model
-      </div>
+      <div class="card">Built Quantum Circuit Simulator</div>
+      <div class="card">Completed Qiskit Training</div>
 
     </section>
 
@@ -167,8 +133,9 @@
   </main>
 
 </div>
+
+<!-- ⚛️ IMPORTANT: JS MUST BE LAST -->
 <script src="script.js"></script>
 
-</body>
 </body>
 </html>
