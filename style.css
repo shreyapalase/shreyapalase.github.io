@@ -1,0 +1,160 @@
+/* GLOBAL RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", sans-serif;
+}
+
+body {
+  background: #050b1a;
+  color: #e6f1ff;
+  line-height: 1.6;
+  display: flex;
+  overflow-x: hidden;
+}
+
+/* QUANTUM PARTICLE BACKGROUND */
+body::before,
+body::after {
+  content: "";
+  position: fixed;
+  width: 200%;
+  height: 200%;
+  top: -50%;
+  left: -50%;
+  z-index: -1;
+  background: radial-gradient(circle, rgba(100,255,218,0.15) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: moveParticles 20s linear infinite;
+  opacity: 0.3;
+}
+
+/* SECOND LAYER (DEPTH EFFECT) */
+body::after {
+  background: radial-gradient(circle, rgba(0,200,255,0.1) 1px, transparent 1px);
+  background-size: 80px 80px;
+  animation: moveParticlesReverse 30s linear infinite;
+  opacity: 0.2;
+}
+
+/* ANIMATION */
+@keyframes moveParticles {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
+}
+
+@keyframes moveParticlesReverse {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-50px, -50px);
+  }
+}
+
+/* CONTAINER */
+.container {
+  display: flex;
+  width: 100%;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 30%;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 50px 30px;
+
+  background: linear-gradient(180deg, #0a192f, #050b1a);
+  border-right: 1px solid #1f2a44;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* TITLE */
+.sidebar h1 {
+  font-size: 28px;
+  color: #64ffda;
+}
+
+.sidebar h3 {
+  color: #8892b0;
+}
+
+/* NAV */
+nav a {
+  display: block;
+  color: #ccd6f6;
+  text-decoration: none;
+  margin: 10px 0;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #64ffda;
+  transform: translateX(6px);
+}
+
+/* CONTENT */
+.content {
+  margin-left: 30%;
+  padding: 60px;
+  width: 70%;
+}
+
+/* SECTIONS */
+h2 {
+  color: #64ffda;
+  margin-bottom: 15px;
+  border-left: 3px solid #64ffda;
+  padding-left: 10px;
+}
+
+/* CARDS */
+.card {
+  background: rgba(10, 25, 47, 0.8);
+  border: 1px solid #1f2a44;
+  padding: 20px;
+  margin: 20px 0;
+  border-radius: 10px;
+  transition: 0.4s;
+  backdrop-filter: blur(5px);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  border-color: #64ffda;
+  box-shadow: 0 0 20px rgba(100,255,218,0.2);
+}
+
+/* LINKS */
+a {
+  color: #64ffda;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    position: relative;
+    width: 100%;
+    height: auto;
+  }
+
+  .content {
+    margin-left: 0;
+    width: 100%;
+  }
+}
