@@ -113,3 +113,66 @@ h2 {
 .socials a:hover {
   color: #1f6feb;
 }
+
+
+/* =========================
+   QUANTUM SYMBOL DECOR LAYER
+========================= */
+.quantum-symbols {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* BASE STYLE */
+.quantum-symbols span {
+  position: absolute;
+  color: rgba(31, 111, 235, 0.25);
+  font-size: 26px;
+  font-weight: bold;
+  user-select: none;
+}
+
+/* =========================
+   POSITIONING (IMPORTANT)
+========================= */
+.q1 {
+  top: 10%;
+  left: 65%;
+  font-size: 40px;
+}
+
+.q2 {
+  top: 70%;
+  left: 80%;
+  font-size: 30px;
+}
+
+.q3 {
+  top: 40%;
+  left: 75%;
+  font-size: 50px;
+}
+
+.q4 {
+  top: 85%;
+  left: 60%;
+  font-size: 35px;
+}
+
+.q5 {
+  top: 25%;
+  left: 85%;
+  font-size: 28px;
+}
+
+/* =========================
+   HOVER GLOW (OPTIONAL PROFESSIONAL TOUCH)
+========================= */
+.quantum-symbols span:hover {
+  color: #1f6feb;
+  text-shadow: 0 0 10px rgba(31,111,235,0.8);
+  transform: scale(1.2);
+  transition: 0.3s;
+}
