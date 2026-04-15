@@ -210,3 +210,37 @@ html, body {
   position: relative;
   z-index: 2;
 }
+
+
+/* FORCE LEFT CORNER IMAGE */
+.quantum-corner-image {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+
+  width: 130px;
+  height: 130px;
+
+  z-index: 9999; /* IMPORTANT: must be HIGH */
+
+  border-radius: 10px;
+  overflow: hidden;
+
+  border: 1px solid rgba(56,189,248,0.5);
+  box-shadow: 0 0 20px rgba(56,189,248,0.3);
+
+  background: #0b0f17;
+}
+
+.quantum-corner-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* hover effect */
+.quantum-corner-image:hover {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
