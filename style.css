@@ -1,141 +1,60 @@
+const canvas = document.getElementById("qbg");
+const ctx = canvas.getContext("2d");
 
-/* =========================
-   GLOBAL RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Inter", sans-serif;
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
-body {
-  background: #05070d;
-  color: #e6edf3;
+resize();
+window.addEventListener("resize", resize);
+
+let particles = [];
+
+for (let i = 0; i < 120; i++) {
+  particles.push({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 1.2,
+    vy: (Math.random() - 0.5) * 1.2
+  });
 }
 
-/* =========================
-   LAYOUT CHANGE (IMPORTANT)
-========================= */
-.container {
-  display: flex;
+function animate() {
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // draw particles
+  for (let p of particles) {
+    p.x += p.vx;
+    p.y += p.vy;
+
+    if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+    if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+
+    ctx.fillStyle = "#38bdf8";
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // connect lines
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i; j < particles.length; j++) {
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 120) {
+        ctx.strokeStyle = "rgba(56,189,248,0.1)";
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
+        ctx.stroke();
+      }
+    }
+  }
+
+  requestAnimationFrame(animate);
 }
 
-/* =========================
-   SIDEBAR (NEW STRONG STYLE)
-========================= */
-.sidebar {
-  width: 280px;
-  height: 100vh;
-  position: fixed;
-
-  padding: 25px;
-
-  background: #0d1117;
-  border-right: 2px solid #1f6feb;
-}
-
-.sidebar h1 {
-  color: #1f6feb;
-  font-size: 20px;
-}
-
-/* ROLE TEXT */
-.role {
-  color: #8b949e;
-  font-size: 13px;
-  margin: 10px 0;
-}
-
-/* =========================
-   NAV
-========================= */
-nav a {
-  display: block;
-  color: #c9d1d9;
-  text-decoration: none;
-  margin: 12px 0;
-  padding: 8px;
-  border-radius: 6px;
-}
-
-nav a:hover {
-  background: #1f6feb;
-  color: white;
-}
-
-/* =========================
-   MAIN CONTENT (CLEAR CHANGE)
-========================= */
-.content {
-  margin-left: 280px;
-  padding: 40px;
-}
-
-/* =========================
-   SECTIONS
-========================= */
-section {
-  margin-bottom: 40px;
-}
-
-h2 {
-  color: #1f6feb;
-  margin-bottom: 15px;
-}
-
-/* =========================
-   CARDS (MAJOR VISUAL CHANGE)
-========================= */
-.card {
-  background: #0d1117;
-  border: 1px solid #1f6feb;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-}
-
-.card:hover {
-  border-color: #58a6ff;
-  transform: translateY(-3px);
-}
-
-/* =========================
-   SOCIAL LINKS
-========================= */
-.socials a {
-  display: block;
-  color: #8b949e;
-  margin-top: 10px;
-  text-decoration: none;
-}
-
-.socials a:hover {
-  color: #1f6feb;
-}
-
-
-/* =========================
-   QUANTUM SYMBOL DECOR LAYER
-========================= */
-.quantum-symbols {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-
-  font-size: 28px;
-  color: rgba(56,189,248,0.6);
-
-  z-index: 9999;
-
-  pointer-events: none;
-}
-
-
-/* FULL SCREEN BACKGROUND CANVAS */
-#quantum-bg {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  background: #0b0f17;
-}
+animate();
