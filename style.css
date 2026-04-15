@@ -1,4 +1,7 @@
-/* GLOBAL RESET */
+
+/* =========================
+   RESET + BASE
+========================= */
 * {
   margin: 0;
   padding: 0;
@@ -10,93 +13,64 @@ body {
   background: #050b1a;
   color: #e6f1ff;
   line-height: 1.6;
-  display: flex;
   overflow-x: hidden;
 }
 
-/* QUANTUM PARTICLE BACKGROUND */
+/* =========================
+   ⚛️ QUANTUM BACKGROUND LAYERS
+========================= */
+
+/* Layer 1 - glowing particles */
 body::before {
-  content: "⚛ ᚠ ⟡ ⟢ ⟣ ⚛ ⟡ 𝛙 𝛌 𝜓";
+  content: "";
   position: fixed;
-  width: 200%;
-  height: 200%;
   top: 0;
   left: 0;
-  font-size: 20px;
-  color: rgba(100,255,218,0.08);
-  white-space: nowrap;
-  animation: floatSymbols 25s linear infinite;
-  z-index: -1;
+  width: 200%;
+  height: 200%;
+  background-image: radial-gradient(circle, rgba(100,255,218,0.9) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.25;
+  animation: moveParticles 12s linear infinite;
+  z-index: -2;
 }
 
-@keyframes floatSymbols {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-200px, -200px);
-  }
-}
-body::before,
+/* Layer 2 - deep field particles */
 body::after {
   content: "";
   position: fixed;
+  top: 0;
+  left: 0;
   width: 200%;
   height: 200%;
-  top: -50%;
-  left: -50%;
-  z-index: -1;
-  background: radial-gradient(circle, rgba(100,255,218,0.15) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: moveParticles 20s linear infinite;
-  opacity: 0.3;
-}
-
-/* SECOND LAYER (DEPTH EFFECT) */
-body::after {
-  background: radial-gradient(circle, rgba(0,200,255,0.1) 1px, transparent 1px);
+  background-image: radial-gradient(circle, rgba(0,200,255,0.6) 1px, transparent 1px);
   background-size: 80px 80px;
-  animation: moveParticlesReverse 30s linear infinite;
-  opacity: 0.2;
+  opacity: 0.15;
+  animation: moveParticlesReverse 18s linear infinite;
+  z-index: -3;
 }
 
-/* ANIMATION */
+/* Animations */
 @keyframes moveParticles {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(50px, 50px);
-  }
+  from { transform: translate(0, 0); }
+  to { transform: translate(-120px, -120px); }
 }
 
 @keyframes moveParticlesReverse {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(-50px, -50px);
-  }
-}
-body::after {
-  content: "";
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(100,255,218,0.2) 1px, transparent 1px);
-  background-size: 60px 60px;
-  animation: moveParticles 20s linear infinite;
-  opacity: 0.2;
-  z-index: -1;
+  from { transform: translate(0, 0); }
+  to { transform: translate(120px, 120px); }
 }
 
-/* CONTAINER */
+/* =========================
+   CONTAINER LAYOUT
+========================= */
 .container {
   display: flex;
-  width: 100%;
 }
 
-/* SIDEBAR */
+/* =========================
+   SIDEBAR
+========================= */
 .sidebar {
   width: 30%;
   height: 100vh;
@@ -113,17 +87,27 @@ body::after {
   justify-content: space-between;
 }
 
-/* TITLE */
+/* Title */
 .sidebar h1 {
   font-size: 28px;
   color: #64ffda;
 }
 
 .sidebar h3 {
+  font-size: 16px;
   color: #8892b0;
 }
 
-/* NAV */
+/* Intro text */
+.intro {
+  color: #a8b2d1;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+/* =========================
+   NAV LINKS
+========================= */
 nav a {
   display: block;
   color: #ccd6f6;
@@ -137,14 +121,38 @@ nav a:hover {
   transform: translateX(6px);
 }
 
-/* CONTENT */
+/* =========================
+   SOCIAL ICONS
+========================= */
+.socials a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 10px 0;
+  color: #8892b0;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.socials a i {
+  color: #64ffda;
+}
+
+.socials a:hover {
+  color: #64ffda;
+  transform: translateX(5px);
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
 .content {
   margin-left: 30%;
   padding: 60px;
   width: 70%;
 }
 
-/* SECTIONS */
+/* Section headings */
 h2 {
   color: #64ffda;
   margin-bottom: 15px;
@@ -152,31 +160,52 @@ h2 {
   padding-left: 10px;
 }
 
-/* CARDS */
+/* Paragraphs */
+p {
+  color: #a8b2d1;
+  margin-bottom: 15px;
+}
+
+/* Lists */
+ul {
+  margin-left: 20px;
+  color: #a8b2d1;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* =========================
+   PROJECT CARDS
+========================= */
 .card {
   background: rgba(10, 25, 47, 0.8);
   border: 1px solid #1f2a44;
   padding: 20px;
   margin: 20px 0;
   border-radius: 10px;
+
   transition: 0.4s;
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(6px);
 }
 
 .card:hover {
   transform: translateY(-8px) scale(1.02);
   border-color: #64ffda;
-  box-shadow: 0 0 20px rgba(100,255,218,0.2);
+  box-shadow: 0 0 25px rgba(100,255,218,0.2);
 }
 
-/* LINKS */
+/* Links */
 a {
   color: #64ffda;
 }
 
-/* RESPONSIVE */
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
 @media (max-width: 768px) {
-  body {
+  .container {
     flex-direction: column;
   }
 
@@ -190,23 +219,4 @@ a {
     margin-left: 0;
     width: 100%;
   }
-}
-.socials a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 0;
-  color: #8892b0;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.socials a i {
-  color: #64ffda;
-  font-size: 16px;
-}
-
-.socials a:hover {
-  color: #64ffda;
-  transform: translateX(5px);
 }
