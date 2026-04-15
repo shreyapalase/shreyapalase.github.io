@@ -151,47 +151,7 @@ h2 {
 .q4 { top: 80%; left: 60%; }
 .q5 { top: 25%; left: 85%; }
 
-/* =========================
-   QUANTUM LEFT IMAGE
-========================= */
-.quantum-corner-image {
-  position: fixed;
-  top: 20px;
-  left: 20px;
 
-  width: 120px;
-  height: 120px;
-
-  z-index: 5;
-
-  border-radius: 10px;
-  overflow: hidden;
-
-  border: 1px solid rgba(56,189,248,0.4);
-
-  box-shadow: 0 0 15px rgba(56,189,248,0.2);
-
-  opacity: 0.9;
-
-  transition: 0.3s ease;
-}
-
-.quantum-corner-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.quantum-corner-image:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 25px rgba(56,189,248,0.5);
-}
-
-html, body {
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-}
 
 /* MAKE CANVAS FULL SCREEN + ALWAYS BEHIND */
 #qbg {
@@ -212,35 +172,3 @@ html, body {
 }
 
 
-/* FORCE LEFT CORNER IMAGE */
-.quantum-corner-image {
-  position: fixed;
-  top: 15px;
-  left: 15px;
-
-  width: 130px;
-  height: 130px;
-
-  z-index: 9999; /* IMPORTANT: must be HIGH */
-
-  border-radius: 10px;
-  overflow: hidden;
-
-  border: 1px solid rgba(56,189,248,0.5);
-  box-shadow: 0 0 20px rgba(56,189,248,0.3);
-
-  background: #0b0f17;
-}
-
-.quantum-corner-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
-
-/* hover effect */
-.quantum-corner-image:hover {
-  transform: scale(1.05);
-  transition: 0.3s;
-}
