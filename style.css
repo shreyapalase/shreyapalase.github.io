@@ -1,135 +1,65 @@
 
-/* RESET */
-* {
+/* BASE */
+body {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  background: #02030a;
+  color: white;
+  overflow: hidden;
   font-family: Arial;
 }
 
-/* BACKGROUND */
-body {
-  background: #050b1a;
-  color: white;
-  overflow-x: hidden;
-  position: relative;
-}
-
-/* 🌌 DOT PARTICLES */
-body::after {
-  content: "";
+/* 🌌 CANVAS BACKGROUND */
+#quantumCanvas {
   position: fixed;
-  inset: 0;
-
-  background-image: radial-gradient(circle, #64ffda 2px, transparent 3px);
-  background-size: 45px 45px;
-
-  opacity: 0.3;
-  animation: moveDots 10s linear infinite;
-
-  z-index: -2;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -3;
 }
 
-/* ⚛️ FLOATING TEXT */
-body::before {
-  content: "⚛ QUANTUM ψ 𝜓 𝛌 WAVE FUNCTION MATRIX ⚛";
-  position: fixed;
-  inset: 0;
-
-  font-size: 24px;
-  color: rgba(100,255,218,0.12);
-  white-space: nowrap;
-
-  animation: floatText 18s linear infinite;
-
-  z-index: -1;
-}
-
-/* QUBIT SVG */
+/* ⚛️ QUBIT */
 .qubit-bg {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 400px;
-  height: 400px;
-
+  width: 450px;
+  opacity: 0.15;
   transform: translate(-50%, -50%);
-  opacity: 0.08;
-
   animation: spin 20s linear infinite;
-
   z-index: -1;
 }
 
-/* LAYOUT */
-.container {
-  display: flex;
-}
-
+/* SIDEBAR */
 .sidebar {
+  position: fixed;
   width: 30%;
   height: 100vh;
-  position: fixed;
   padding: 40px;
-
-  background: #0a192f;
+  background: rgba(10, 25, 47, 0.8);
+  border-right: 1px solid #00fff7;
 }
 
+/* CONTENT */
 .content {
   margin-left: 30%;
   padding: 50px;
 }
 
-/* CARDS */
-.card {
-  background: #0a192f;
-  padding: 20px;
-  margin: 20px 0;
-  border-radius: 10px;
-  border: 1px solid #1f2a44;
+/* TEXT GLOW */
+h1, h2 {
+  color: #00fff7;
+  text-shadow: 0 0 10px #00fff7;
 }
 
-/* ANIMATIONS */
-@keyframes moveDots {
-  from { transform: translate(0,0); }
-  to { transform: translate(80px,80px); }
+/* LINKS */
+a {
+  color: #00fff7;
+  text-decoration: none;
 }
 
-@keyframes floatText {
-  from { transform: translate(0,0); }
-  to { transform: translate(-200px,-200px); }
-}
-
+/* ANIMATION */
 @keyframes spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-.mouse-particle {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: #00fff7;
-  border-radius: 50%;
-  pointer-events: none;
-
-  box-shadow: 0 0 10px #00fff7, 0 0 20px #00fff7;
-  animation: fadeOut 0.6s linear forwards;
-  z-index: 9999;
-}
-
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-    transform: scale(1);
-  }
-  to {
-    opacity: 0;
-    transform: scale(2);
-  }
-}
-
-/* Active nav link */
-nav a.active {
-  color: #ff00ff;
-  transform: translateX(8px);
 }
