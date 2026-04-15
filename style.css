@@ -1,25 +1,21 @@
 
-/* =========================
-   RESET + BASE
-========================= */
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", sans-serif;
+  font-family: Arial;
 }
 
+/* BACKGROUND */
 body {
-  background: radial-gradient(circle at top, #0a1a2f, #050b1a);
-  color: #e6f1ff;
+  background: #050b1a;
+  color: white;
   overflow-x: hidden;
   position: relative;
-  min-height: 100vh;
 }
 
-/* =========================
-   🌌 QUANTUM PARTICLE LAYER
-========================= */
+/* 🌌 DOT PARTICLES */
 body::after {
   content: "";
   position: fixed;
@@ -28,209 +24,83 @@ body::after {
   background-image: radial-gradient(circle, #64ffda 2px, transparent 3px);
   background-size: 45px 45px;
 
-  opacity: 0.22;
-  animation: moveDots 14s linear infinite;
-
-  z-index: -3;
-}
-
-/* =========================
-   ⚛️ QUANTUM SYMBOL LAYER
-========================= */
-body::before {
-  content: "⚛ ⟡ 𝛙 𝛌 𝜓 ⚛ ⟡ ⟢ ⟣ ⚛ ⟡";
-  position: fixed;
-
-  inset: 0;
-
-  font-size: 22px;
-  color: rgba(100,255,218,0.07);
-  white-space: nowrap;
-
-  animation: floatSymbols 22s linear infinite;
+  opacity: 0.3;
+  animation: moveDots 10s linear infinite;
 
   z-index: -2;
 }
 
-/* =========================
-   🧬 FLOATING QUBIT SVG BACKGROUND
-========================= */
-body::marker {
-  content: "";
+/* ⚛️ FLOATING TEXT */
+body::before {
+  content: "⚛ QUANTUM ψ 𝜓 𝛌 WAVE FUNCTION MATRIX ⚛";
+  position: fixed;
+  inset: 0;
+
+  font-size: 24px;
+  color: rgba(100,255,218,0.12);
+  white-space: nowrap;
+
+  animation: floatText 18s linear infinite;
+
+  z-index: -1;
 }
 
-/* SVG BACKGROUND LAYER */
+/* QUBIT SVG */
 .qubit-bg {
   position: fixed;
   top: 50%;
   left: 50%;
-  width: 500px;
-  height: 500px;
+  width: 400px;
+  height: 400px;
 
   transform: translate(-50%, -50%);
-  opacity: 0.06;
+  opacity: 0.08;
+
+  animation: spin 20s linear infinite;
 
   z-index: -1;
-
-  animation: spinQubit 25s linear infinite;
 }
 
-/* =========================
-   LAYOUT
-========================= */
+/* LAYOUT */
 .container {
   display: flex;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
 .sidebar {
   width: 30%;
   height: 100vh;
   position: fixed;
-  left: 0;
-  top: 0;
+  padding: 40px;
 
-  padding: 50px 30px;
-
-  background: linear-gradient(180deg, #0a192f, #050b1a);
-  border-right: 1px solid #1f2a44;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  background: #0a192f;
 }
 
-.sidebar h1 {
-  color: #64ffda;
-  font-size: 28px;
-}
-
-.sidebar h3 {
-  color: #8892b0;
-}
-
-/* NAV */
-nav a {
-  display: block;
-  color: #ccd6f6;
-  text-decoration: none;
-  margin: 10px 0;
-  transition: 0.3s;
-}
-
-nav a:hover {
-  color: #64ffda;
-  transform: translateX(6px);
-}
-
-/* =========================
-   SOCIAL ICONS
-========================= */
-.socials a {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 10px 0;
-  color: #8892b0;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.socials a i {
-  color: #64ffda;
-}
-
-.socials a:hover {
-  color: #64ffda;
-  transform: translateX(5px);
-}
-
-/* =========================
-   MAIN CONTENT
-========================= */
 .content {
   margin-left: 30%;
-  padding: 60px;
-  width: 70%;
+  padding: 50px;
 }
 
-h2 {
-  color: #64ffda;
-  border-left: 3px solid #64ffda;
-  padding-left: 10px;
-  margin-bottom: 15px;
-}
-
-p {
-  color: #a8b2d1;
-  margin-bottom: 15px;
-}
-
-ul {
-  margin-left: 20px;
-  color: #a8b2d1;
-}
-
-li {
-  margin-bottom: 8px;
-}
-
-/* =========================
-   PROJECT CARDS
-========================= */
+/* CARDS */
 .card {
-  background: rgba(10, 25, 47, 0.75);
-  border: 1px solid #1f2a44;
+  background: #0a192f;
   padding: 20px;
   margin: 20px 0;
   border-radius: 10px;
-
-  backdrop-filter: blur(8px);
-  transition: 0.4s;
+  border: 1px solid #1f2a44;
 }
 
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-  border-color: #64ffda;
-  box-shadow: 0 0 25px rgba(100,255,218,0.2);
-}
-
-/* =========================
-   ANIMATIONS
-========================= */
+/* ANIMATIONS */
 @keyframes moveDots {
-  from { transform: translate(0, 0); }
-  to { transform: translate(90px, 90px); }
+  from { transform: translate(0,0); }
+  to { transform: translate(80px,80px); }
 }
 
-@keyframes floatSymbols {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-250px, -250px); }
+@keyframes floatText {
+  from { transform: translate(0,0); }
+  to { transform: translate(-200px,-200px); }
 }
 
-@keyframes spinQubit {
+@keyframes spin {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    width: 100%;
-    height: auto;
-    position: relative;
-  }
-
-  .content {
-    margin-left: 0;
-    width: 100%;
-  }
 }
