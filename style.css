@@ -130,3 +130,12 @@ h2 {
 
   pointer-events: none;
 }
+
+
+/* FULL SCREEN BACKGROUND CANVAS */
+#quantum-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #0b0f17;
+}
