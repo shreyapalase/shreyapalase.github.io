@@ -186,3 +186,27 @@ h2 {
   transform: scale(1.05);
   box-shadow: 0 0 25px rgba(56,189,248,0.5);
 }
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+/* MAKE CANVAS FULL SCREEN + ALWAYS BEHIND */
+#qbg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  z-index: -10;
+  background: #05070d;
+}
+
+/* ENSURE UI IS ABOVE CANVAS */
+.container {
+  position: relative;
+  z-index: 2;
+}
