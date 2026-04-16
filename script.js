@@ -117,8 +117,8 @@ navLinks.forEach(link => {
 // 🔥 JARVIS TYPING EFFECT
 // =====================================================
 
-const titleText = "Quantum AI Lab";
-const subtitleText = "Quantum Computing Student";
+const titleText = "Shreya Palase";
+const subtitleText = "Quantum Computing Enthusiast";
 
 const titleEl = document.getElementById("title-text");
 const subtitleEl = document.getElementById("subtitle-text");
