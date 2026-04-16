@@ -37,23 +37,28 @@ for (let i = 0; i < PARTICLE_COUNT; i++) {
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+  // draw particles
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
 
     p.x += p.vx;
     p.y += p.vy;
 
+    // quantum wave-like motion
     p.y += Math.sin(p.x * 0.01) * 0.3;
 
+    // bounce edges
     if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
     if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
 
+    // draw particle
     ctx.fillStyle = "rgba(56,189,248,0.8)";
     ctx.beginPath();
     ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
     ctx.fill();
   }
 
+  // draw connections
   for (let i = 0; i < particles.length; i++) {
     for (let j = i + 1; j < particles.length; j++) {
 
@@ -80,38 +85,30 @@ animate();
 
 
 // =====================================================
-// 🔥 NEW FEATURE: SECTION SWITCHING (SAFE ADDITION)
+// 🔥 SECTION NAVIGATION SYSTEM (APP VIEW SWITCHING)
 // =====================================================
 
 const navLinks = document.querySelectorAll("nav a");
 const sections = document.querySelectorAll(".section");
 
-// default active section (safety check)
-document.addEventListener("DOMContentLoaded", () => {
-  const defaultSection = document.querySelector(".section");
-  if (defaultSection) defaultSection.classList.add("active");
-});
+// show section function
+function showSection(id) {
+  sections.forEach(sec => sec.classList.remove("active"));
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.add("active");
+  }
+}
 
 // navigation click handling
 navLinks.forEach(link => {
-  link.addEventListener("click", function (e) {
+  link.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const target = this.getAttribute("data-section");
-
+    const target = link.getAttribute("data-section");
     if (!target) return;
 
-    // hide all sections
-    sections.forEach(sec => sec.classList.remove("active"));
-
-    // show selected section
-    const activeSection = document.getElementById(target);
-    if (activeSection) {
-      activeSection.classList.add("active");
-    }
-
-    // optional: active nav highlight
-    navLinks.forEach(l => l.classList.remove("active"));
-    this.classList.add("active");
+    showSection(target);
   });
 });
