@@ -27,14 +27,51 @@ body {
 /* =========================
    TYPOGRAPHY
 ========================= */
-h1, h2, h3 {
+h1 {
+  font-size: 22px;
   font-family: "Orbitron", sans-serif;
-  letter-spacing: 1.5px;
 }
 
 h2 {
+  position: relative;
+  font-family: "Orbitron", sans-serif;
+  font-size: 20px;
+  letter-spacing: 2px;
   color: #38bdf8;
-  margin-bottom: 20px;
+
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+
+  text-shadow: 0 0 8px rgba(56,189,248,0.3);
+}
+
+h3 {
+  font-size: 16px;
+  font-family: "Rajdhani", sans-serif;
+}
+
+/* Animated underline */
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+
+  width: 60px;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    #38bdf8,
+    transparent
+  );
+
+  transition: 0.4s;
+}
+
+/* Expand on section hover */
+section:hover h2::after {
+  width: 120px;
 }
 
 /* =========================
@@ -76,7 +113,6 @@ h2 {
 
 .sidebar h1 {
   color: #38bdf8;
-  font-size: 20px;
 }
 
 .sidebar h3 {
@@ -115,93 +151,64 @@ nav a:hover {
 }
 
 /* =========================
-   GRID LAYOUT (NEW)
+   VERTICAL CARD LAYOUT
 ========================= */
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 /* =========================
-   CARDS (MODERN STYLE)
+   CARDS (PROFESSIONAL STYLE)
 ========================= */
 .card {
   position: relative;
-  padding: 20px;
-  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
 
-  background: linear-gradient(
-    145deg,
-    rgba(13,17,23,0.9),
-    rgba(13,17,23,0.6)
-  );
+  padding: 18px 20px;
+  border-radius: 12px;
 
-  backdrop-filter: blur(14px);
+  background: rgba(13,17,23,0.7);
+  backdrop-filter: blur(10px);
 
-  border: 1px solid rgba(56,189,248,0.15);
+  border-left: 3px solid rgba(56,189,248,0.4);
 
-  transition: all 0.35s ease;
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
 /* Hover */
 .card:hover {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateX(6px);
 
-  box-shadow:
-    0 0 15px rgba(56,189,248,0.3),
-    0 0 40px rgba(56,189,248,0.15);
+  border-left: 3px solid #38bdf8;
+
+  box-shadow: 0 0 12px rgba(56,189,248,0.2);
 }
 
-/* Animated border */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(56,189,248,0.6),
-    transparent
-  );
-
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.card:hover::after {
-  opacity: 1;
-}
-
-/* Scan line */
+/* Left scan line */
 .card::before {
   content: "";
   position: absolute;
+  left: 0;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
 
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #38bdf8,
-    transparent
-  );
+  width: 3px;
+  height: 0;
 
-  transition: 0.5s;
+  background: #38bdf8;
+  transition: 0.4s;
 }
 
 .card:hover::before {
-  left: 100%;
+  height: 100%;
 }
 
 /* Card text */
 .card h3 {
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: #38bdf8;
 }
 
