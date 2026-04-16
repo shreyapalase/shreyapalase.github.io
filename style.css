@@ -1,3 +1,9 @@
+/* =========================
+   GOOGLE FONTS (ADD IN HTML)
+   =========================
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rajdhani:wght@400;500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+========================= */
+
 
 /* =========================
    GLOBAL RESET
@@ -6,19 +12,33 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family:"IBM Plex Mono",monospace;
 }
 
 body {
   background: #05070d;
   color: #e6edf3;
   overflow-x: hidden;
-   font-family:"IBM Plex Mono",monospace;
+
+  font-family: "IBM Plex Mono", monospace;
+  line-height: 1.6;
+  letter-spacing: 0.5px;
 }
 
 /* =========================
-   QUANTUM BACKGROUND CANVAS
-   (used with script.js)
+   TYPOGRAPHY
+========================= */
+h1, h2, h3 {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 1.5px;
+}
+
+h2 {
+  color: #38bdf8;
+  margin-bottom: 15px;
+}
+
+/* =========================
+   BACKGROUND CANVAS
 ========================= */
 #qbg {
   position: fixed;
@@ -27,6 +47,7 @@ body {
   width: 100%;
   height: 100%;
   z-index: -10;
+  background: #05070d;
 }
 
 /* =========================
@@ -39,17 +60,18 @@ body {
 }
 
 /* =========================
-   SIDEBAR (IBM STYLE)
+   SIDEBAR
 ========================= */
 .sidebar {
   width: 280px;
   height: 100vh;
   position: fixed;
-
   padding: 25px;
 
-  background: #0d1117;
-  border-right: 2px solid #1f6feb;
+  background: rgba(13, 17, 23, 0.85);
+  backdrop-filter: blur(12px);
+
+  border-right: 1px solid rgba(56,189,248,0.2);
 }
 
 .sidebar h1 {
@@ -68,22 +90,24 @@ body {
 ========================= */
 nav a {
   display: block;
-  color: #c9d1d9;
+  color: #9ca3af;
   text-decoration: none;
-  margin: 12px 0;
-  padding: 8px;
-  border-radius: 6px;
-  transition: 0.2s;
+  margin: 10px 0;
+  padding: 10px;
+
+  border-left: 2px solid transparent;
+  transition: 0.25s;
 }
 
 nav a:hover {
-  background: #1f6feb;
-  color: white;
-  transform: translateX(5px);
+  color: #38bdf8;
+  border-left: 2px solid #38bdf8;
+  background: rgba(56,189,248,0.08);
+  transform: translateX(6px);
 }
 
 /* =========================
-   MAIN CONTENT
+   CONTENT
 ========================= */
 .content {
   margin-left: 280px;
@@ -91,29 +115,79 @@ nav a:hover {
 }
 
 /* =========================
-   HEADINGS
-========================= */
-h2 {
-  color: #38bdf8;
-  margin-bottom: 15px;
-}
-
-/* =========================
-   CARDS
+   CARDS (GLASS + GLOW)
 ========================= */
 .card {
-  background: #0d1117;
-  border: 1px solid #1f6feb;
-  padding: 15px;
-  margin: 10px 0;
-  border-radius: 10px;
-  transition: 0.3s ease;
+  position: relative;
+  background: rgba(13, 17, 23, 0.75);
+  border: none;
+  padding: 18px;
+  margin: 12px 0;
+  border-radius: 12px;
+
+  backdrop-filter: blur(12px);
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
 .card:hover {
-  border-color: #38bdf8;
-  transform: translateY(-4px);
-  box-shadow: 0 0 15px rgba(56,189,248,0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 0 25px rgba(56,189,248,0.25);
+  animation: pulseGlow 2s infinite;
+}
+
+/* Hover scan effect */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.25),
+    transparent
+  );
+
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
+   INPUT / TEXTAREA
+========================= */
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+
+  background: rgba(255,255,255,0.03);
+  border: none;
+  border-radius: 8px;
+
+  color: #e6edf3;
+  font-family: "Rajdhani", sans-serif;
+
+  outline: none;
+  transition: 0.3s ease;
+  position: relative;
+}
+
+/* Glow on focus */
+input:focus, textarea:focus {
+  background: rgba(56,189,248,0.08);
+  box-shadow: 
+    0 0 8px rgba(56,189,248,0.6),
+    0 0 20px rgba(56,189,248,0.3);
+}
+
+/* Hover tech scan */
+input:hover, textarea:hover {
+  box-shadow: 0 0 10px rgba(56,189,248,0.2);
 }
 
 /* =========================
@@ -124,6 +198,7 @@ h2 {
   color: #9ca3af;
   margin-top: 10px;
   text-decoration: none;
+  transition: 0.3s;
 }
 
 .socials a:hover {
@@ -131,7 +206,7 @@ h2 {
 }
 
 /* =========================
-   QUANTUM SYMBOLS LAYER
+   QUANTUM SYMBOLS
 ========================= */
 .quantum-symbols {
   position: fixed;
@@ -152,24 +227,37 @@ h2 {
 .q4 { top: 80%; left: 60%; }
 .q5 { top: 25%; left: 85%; }
 
-
-
-/* MAKE CANVAS FULL SCREEN + ALWAYS BEHIND */
-#qbg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-
-  z-index: -10;
-  background: #05070d;
+/* =========================
+   ANIMATIONS
+========================= */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 5px rgba(56,189,248,0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(56,189,248,0.5);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(56,189,248,0.2);
+  }
 }
 
-/* ENSURE UI IS ABOVE CANVAS */
-.container {
-  position: relative;
-  z-index: 2;
+/* =========================
+   SCROLLBAR
+========================= */
+::-webkit-scrollbar {
+  width: 6px;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #1f6feb;
+  border-radius: 10px;
+}
 
+/* =========================
+   TEXT SELECTION
+========================= */
+::selection {
+  background: #38bdf8;
+  color: #05070d;
+}
