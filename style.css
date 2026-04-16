@@ -225,15 +225,74 @@ nav a:hover {
 /* =========================
    SOCIAL LINKS
 ========================= */
-.socials a {
-  display: block;
-  color: #9ca3af;
-  margin-top: 10px;
-  text-decoration: none;
+.socials {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
 }
 
-.socials a:hover {
-  color: #38bdf8;
+.social {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 18px;
+  border-radius: 12px;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon size */
+.social i {
+  font-size: 20px;
+  transition: transform 0.3s ease;
+}
+
+/* Hover lift + glow */
+.social:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* Animated glow effect */
+.social::before {
+  content: "";
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  top: -10%;
+  left: -10%;
+  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.social:hover::before {
+  opacity: 1;
+}
+
+/* Individual brand glow colors */
+.github:hover {
+  box-shadow: 0 0 20px #ffffff55, 0 0 40px #ffffff22;
+}
+
+.linkedin:hover {
+  box-shadow: 0 0 20px #0a66c2aa, 0 0 40px #0a66c255;
+}
+
+.medium:hover {
+  box-shadow: 0 0 20px #ffffff33, 0 0 40px #ffffff22;
+}
+
+/* Icon bounce on hover */
+.social:hover i {
+  transform: rotate(-10deg) scale(1.2);
 }
 
 /* =========================
