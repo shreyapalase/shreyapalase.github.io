@@ -112,3 +112,49 @@ navLinks.forEach(link => {
     showSection(target);
   });
 });
+
+// =====================================================
+// 🔥 JARVIS TYPING EFFECT
+// =====================================================
+
+const titleText = "Quantum AI Lab";
+const subtitleText = "Quantum Computing Student";
+
+const titleEl = document.getElementById("title-text");
+const subtitleEl = document.getElementById("subtitle-text");
+
+let i = 0;
+let j = 0;
+
+function typeTitle() {
+  if (i < titleText.length) {
+    titleEl.textContent += titleText.charAt(i);
+    i++;
+    setTimeout(typeTitle, 120);
+  } else {
+    setTimeout(typeSubtitle, 400);
+  }
+}
+
+function typeSubtitle() {
+  if (j < subtitleText.length) {
+    subtitleEl.textContent += subtitleText.charAt(j);
+    j++;
+    setTimeout(typeSubtitle, 80);
+  }
+}
+
+// restart loop
+function startTypingLoop() {
+  titleEl.textContent = "";
+  subtitleEl.textContent = "";
+  i = 0;
+  j = 0;
+  typeTitle();
+}
+
+// start on load
+startTypingLoop();
+
+// repeat animation every 8 seconds
+setInterval(startTypingLoop, 8000);
