@@ -6,13 +6,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Inter", JetBrain Mono;
+  font-family:"JetBrain Mono",monospace;
 }
 
 body {
   background: #05070d;
   color: #e6edf3;
   overflow-x: hidden;
+   font-family:"JetBrain Mono",monospace;
 }
 
 /* =========================
