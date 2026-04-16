@@ -60,12 +60,7 @@ h2::after {
   width: 60px;
   height: 2px;
 
-  background: linear-gradient(
-    90deg,
-    #38bdf8,
-    transparent
-  );
-
+  background: linear-gradient(90deg, #38bdf8, transparent);
   transition: 0.4s;
 }
 
@@ -83,7 +78,6 @@ section:hover h2::after {
   width: 100%;
   height: 100%;
   z-index: -10;
-  background: #05070d;
 }
 
 /* =========================
@@ -150,90 +144,106 @@ nav a:hover {
 }
 
 /* =========================
-   HORIZONTAL SCROLL GRID
+   GRID (3 CARDS PER ROW)
 ========================= */
 .grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  scroll-snap-type: x mandatory;
-
-  padding-bottom: 10px;
-
-  /* Edge fade effect */
-  mask-image: linear-gradient(
-    to right,
-    transparent,
-    white 10%,
-    white 90%,
-    transparent
-  );
 }
 
-/* Scrollbar styling */
-.grid::-webkit-scrollbar {
-  height: 5px;
+/* Responsive */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
-.grid::-webkit-scrollbar-thumb {
-  background: rgba(56,189,248,0.3);
-  border-radius: 10px;
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
 }
 
 /* =========================
-   CARDS
+   CARDS (GLOW STYLE RESTORED)
 ========================= */
 .card {
-  min-width: calc(33.33% - 13px); /* 3 cards visible */
-  flex: 0 0 auto;
-
-  scroll-snap-align: start;
-
   position: relative;
-  padding: 18px 20px;
-  border-radius: 12px;
+  padding: 20px;
+  border-radius: 14px;
 
-  background: rgba(13,17,23,0.7);
-  backdrop-filter: blur(10px);
+  background: linear-gradient(
+    145deg,
+    rgba(13,17,23,0.9),
+    rgba(13,17,23,0.6)
+  );
 
-  border-left: 3px solid rgba(56,189,248,0.4);
+  backdrop-filter: blur(14px);
 
-  transition: all 0.3s ease;
+  border: 1px solid rgba(56,189,248,0.15);
+
+  transition: all 0.35s ease;
   overflow: hidden;
 }
 
-/* Hover */
+/* Hover glow */
 .card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px) scale(1.02);
 
-  border-left: 3px solid #38bdf8;
-
-  box-shadow: 0 0 15px rgba(56,189,248,0.25);
+  box-shadow:
+    0 0 15px rgba(56,189,248,0.3),
+    0 0 40px rgba(56,189,248,0.15);
 }
 
-/* Scan line */
-.card::before {
+/* Animated border glow */
+.card::after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0;
+  inset: 0;
+  border-radius: 14px;
 
-  width: 3px;
-  height: 0;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(56,189,248,0.6),
+    transparent
+  );
 
-  background: #38bdf8;
+  opacity: 0;
   transition: 0.4s;
 }
 
-.card:hover::before {
-  height: 100%;
+.card:hover::after {
+  opacity: 1;
 }
 
-/* Card text */
+/* Top scan line */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    transparent
+  );
+
+  transition: 0.5s;
+}
+
+.card:hover::before {
+  left: 100%;
+}
+
+/* Text */
 .card h3 {
-  margin-bottom: 6px;
+  margin-bottom: 8px;
   color: #38bdf8;
 }
 
@@ -279,7 +289,7 @@ nav a:hover {
 .q5 { top: 25%; left: 85%; }
 
 /* =========================
-   SCROLLBAR (GLOBAL)
+   SCROLLBAR
 ========================= */
 ::-webkit-scrollbar {
   width: 6px;
