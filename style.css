@@ -277,3 +277,37 @@ nav a:hover {
   background: #38bdf8;
   color: #05070d;
 }
+
+/* =========================
+   JARVIS TYPING HEADER
+========================= */
+
+#title-text {
+  font-size: 24px;
+  color: #38bdf8;
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: 2px;
+  min-height: 30px;
+}
+
+#subtitle-text {
+  font-size: 14px;
+  color: #9ca3af;
+  font-family: "Rajdhani", sans-serif;
+  letter-spacing: 1px;
+  min-height: 20px;
+}
+
+/* blinking cursor effect */
+#title-text::after,
+#subtitle-text::after {
+  content: "|";
+  margin-left: 4px;
+  animation: blink 0.8s infinite;
+  color: #38bdf8;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
