@@ -25,6 +25,18 @@ body {
 }
 
 /* =========================
+   FORCE SINGLE PAGE VIEW (FIX)
+========================= */
+
+.section {
+  display: none !important;
+}
+
+.section.active {
+  display: block !important;
+}
+
+/* =========================
    TYPOGRAPHY
 ========================= */
 h1, h2, h3 {
