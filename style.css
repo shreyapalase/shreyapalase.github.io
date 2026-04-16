@@ -69,7 +69,6 @@ h2::after {
   transition: 0.4s;
 }
 
-/* Expand on section hover */
 section:hover h2::after {
   width: 120px;
 }
@@ -151,22 +150,48 @@ nav a:hover {
 }
 
 /* =========================
-   VERTICAL CARD LAYOUT
+   HORIZONTAL SCROLL GRID
 ========================= */
 .grid {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
+  gap: 20px;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+
+  padding-bottom: 10px;
+
+  /* Edge fade effect */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    white 10%,
+    white 90%,
+    transparent
+  );
+}
+
+/* Scrollbar styling */
+.grid::-webkit-scrollbar {
+  height: 5px;
+}
+
+.grid::-webkit-scrollbar-thumb {
+  background: rgba(56,189,248,0.3);
+  border-radius: 10px;
 }
 
 /* =========================
-   CARDS (PROFESSIONAL STYLE)
+   CARDS
 ========================= */
 .card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
+  min-width: calc(33.33% - 13px); /* 3 cards visible */
+  flex: 0 0 auto;
 
+  scroll-snap-align: start;
+
+  position: relative;
   padding: 18px 20px;
   border-radius: 12px;
 
@@ -181,14 +206,14 @@ nav a:hover {
 
 /* Hover */
 .card:hover {
-  transform: translateX(6px);
+  transform: translateY(-5px);
 
   border-left: 3px solid #38bdf8;
 
-  box-shadow: 0 0 12px rgba(56,189,248,0.2);
+  box-shadow: 0 0 15px rgba(56,189,248,0.25);
 }
 
-/* Left scan line */
+/* Scan line */
 .card::before {
   content: "";
   position: absolute;
@@ -254,7 +279,7 @@ nav a:hover {
 .q5 { top: 25%; left: 85%; }
 
 /* =========================
-   SCROLLBAR
+   SCROLLBAR (GLOBAL)
 ========================= */
 ::-webkit-scrollbar {
   width: 6px;
