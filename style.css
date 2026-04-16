@@ -227,72 +227,95 @@ nav a:hover {
 ========================= */
 .socials {
   display: flex;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin-top: 20px;
+  gap: 18px;
+  align-items: center;
 }
 
-.social {
+/* ICON BASE */
+.icon {
+  width: 52px;
+  height: 52px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 18px;
-  border-radius: 12px;
+  justify-content: center;
+  border-radius: 14px;
   text-decoration: none;
-  font-size: 16px;
-  font-weight: 500;
   color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  transition: all 0.3s ease;
+  font-size: 22px;
   position: relative;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+  transition: 0.35s ease;
   overflow: hidden;
 }
 
-/* Icon size */
-.social i {
-  font-size: 20px;
-  transition: transform 0.3s ease;
+/* ICON ANIMATION FLOAT (idle subtle motion) */
+.icon {
+  animation: float 4s ease-in-out infinite;
 }
 
-/* Hover lift + glow */
-.social:hover {
-  transform: translateY(-5px) scale(1.05);
+/* stagger animation */
+.github { animation-delay: 0s; }
+.linkedin { animation-delay: 0.6s; }
+.medium { animation-delay: 1.2s; }
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
 }
 
-/* Animated glow effect */
-.social::before {
+/* ICON HOVER - MAGIC GLOW */
+.icon:hover {
+  transform: scale(1.25) rotate(6deg);
+  box-shadow:
+    0 0 10px #ffffff55,
+    0 0 25px #ffffff33,
+    0 0 45px #ffffff22;
+}
+
+/* SHINE EFFECT */
+.icon::before {
   content: "";
   position: absolute;
-  width: 120%;
-  height: 120%;
-  top: -10%;
-  left: -10%;
-  background: radial-gradient(circle, rgba(255,255,255,0.25), transparent 60%);
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255,255,255,0.25),
+    transparent
+  );
+  transform: rotate(25deg);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: 0.4s;
 }
 
-.social:hover::before {
+.icon:hover::before {
+  left: 100%;
   opacity: 1;
 }
 
-/* Individual brand glow colors */
+/* ICON COLOR GLOW PER BRAND */
 .github:hover {
-  box-shadow: 0 0 20px #ffffff55, 0 0 40px #ffffff22;
+  color: #fff;
+  box-shadow: 0 0 20px #ffffffaa, 0 0 40px #ffffff55;
 }
 
 .linkedin:hover {
+  color: #0a66c2;
   box-shadow: 0 0 20px #0a66c2aa, 0 0 40px #0a66c255;
 }
 
 .medium:hover {
-  box-shadow: 0 0 20px #ffffff33, 0 0 40px #ffffff22;
+  color: #ffffff;
+  box-shadow: 0 0 20px #ffffff55, 0 0 40px #ffffff22;
 }
 
-/* Icon bounce on hover */
-.social:hover i {
-  transform: rotate(-10deg) scale(1.2);
+/* CLICK FEEDBACK */
+.icon:active {
+  transform: scale(0.95);
 }
 
 /* =========================
