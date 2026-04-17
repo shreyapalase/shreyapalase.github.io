@@ -1193,3 +1193,17 @@ nav a i {
 .section.active {
   display: block;
 }
+
+.blog-link {
+  display: inline-block;
+  margin-top: 10px;
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.blog-link:hover {
+  color: #ffffff;
+  text-shadow: 0 0 10px #38bdf8;
+}
