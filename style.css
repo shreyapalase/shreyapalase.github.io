@@ -1532,19 +1532,18 @@ nav a i {
   padding: 25px;
   border-radius: 12px;
   text-align: center;
-  color: #e0f7ff;
   max-width: 400px;
   margin: 0 auto;
+  color: #e0f7ff;
 }
 
 .resume-text {
-  font-size: 16px;
   margin-bottom: 15px;
   color: #a8dfff;
 }
 
 /* Download button */
-.resume-btn {
+.download-btn {
   display: inline-block;
   padding: 10px 18px;
   border: 1px solid #00f0ff;
@@ -1552,19 +1551,13 @@ nav a i {
   text-decoration: none;
   color: #00f0ff;
   background: rgba(0, 240, 255, 0.05);
-  letter-spacing: 1px;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
+  margin-bottom: 15px;
 }
 
-.resume-btn:hover {
+.download-btn:hover {
   background: rgba(0, 240, 255, 0.15);
   color: #ffffff;
   border-color: #00ffff;
 }
 
-/* contact text */
-.contact-info {
-  margin-top: 15px;
-  font-size: 14px;
-  color: #7fdfff;
-}
