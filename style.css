@@ -1,3 +1,7 @@
+/* =========================
+   RESET + BASE
+========================= */
+
 * {
   margin: 0;
   padding: 0;
@@ -8,93 +12,255 @@ body {
   background: #05070d;
   color: #e6edf3;
   font-family: "IBM Plex Mono", monospace;
+  overflow-x: hidden;
 }
 
-/* CANVAS */
+/* =========================
+   BACKGROUND CANVAS
+========================= */
+
 #qbg {
   position: fixed;
   inset: 0;
   z-index: 0;
+  pointer-events: none;
 }
 
-/* LAYOUT */
-.layout {
+/* =========================
+   LAYOUT
+========================= */
+
+.container {
   display: flex;
   position: relative;
   z-index: 2;
 }
 
-/* SIDEBAR */
+/* =========================
+   QUANTUM SYMBOLS FLOATING
+========================= */
+
+.quantum-symbols {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.quantum-symbols span {
+  position: absolute;
+  font-size: 28px;
+  color: rgba(56,189,248,0.25);
+  animation: float 6s ease-in-out infinite;
+}
+
+.q1 { top: 10%; left: 70%; }
+.q2 { top: 60%; left: 80%; }
+.q3 { top: 40%; left: 75%; }
+.q4 { top: 80%; left: 60%; }
+.q5 { top: 25%; left: 85%; }
+
+@keyframes float {
+  0%,100% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+}
+
+/* =========================
+   SIDEBAR (JARVIS STYLE)
+========================= */
+
 .sidebar {
-  width: 260px;
+  width: 280px;
   height: 100vh;
-  padding: 25px;
-  background: rgba(10,15,25,0.8);
-  backdrop-filter: blur(10px);
-  border-right: 1px solid rgba(56,189,248,0.3);
+  padding: 20px;
+
+  position: fixed;
+
+  background: rgba(10, 15, 25, 0.75);
+  backdrop-filter: blur(15px);
+
+  border-right: 1px solid rgba(56,189,248,0.25);
+
+  z-index: 3;
 }
 
-.sidebar h1 {
-  font-family: "Orbitron";
+#title-text {
+  font-size: 22px;
+  font-family: "Orbitron", sans-serif;
   color: #38bdf8;
+  text-shadow: 0 0 10px #38bdf8;
 }
 
-/* NAV */
+#subtitle-text {
+  font-size: 14px;
+  color: #9ca3af;
+  margin-top: 5px;
+}
+
+/* =========================
+   NAVIGATION
+========================= */
+
+nav {
+  margin-top: 30px;
+}
+
 nav a {
   display: block;
-  margin: 15px 0;
+  padding: 10px;
+  margin: 8px 0;
+
   color: #9ca3af;
-  cursor: pointer;
+  text-decoration: none;
+
+  border-left: 2px solid transparent;
   transition: 0.3s;
 }
 
 nav a:hover {
   color: #38bdf8;
-  transform: translateX(5px);
+  border-left: 2px solid #38bdf8;
+  transform: translateX(6px);
 }
 
-/* CONTENT */
+/* =========================
+   SOCIAL ICONS
+========================= */
+
+.socials {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background: rgba(255,255,255,0.05);
+  color: #fff;
+
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 15px #38bdf8;
+}
+
+/* =========================
+   MAIN CONTENT
+========================= */
+
 .content {
-  flex: 1;
+  margin-left: 280px;
   padding: 40px;
+  position: relative;
+  z-index: 2;
 }
 
-/* SECTIONS */
-.page {
+/* =========================
+   SECTIONS (IMPORTANT FIX)
+========================= */
+
+.section {
   display: none;
-  animation: fade 0.6s;
+  animation: fade 0.6s ease;
 }
 
-.page.active {
+.section.active {
   display: block;
 }
 
 @keyframes fade {
-  from {opacity:0; transform: translateY(20px);}
-  to {opacity:1; transform: translateY(0);}
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-/* HEADINGS */
+/* =========================
+   HEADINGS (GLOW EFFECT)
+========================= */
+
 h2 {
   color: #38bdf8;
   margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(56,189,248,0.6);
 }
 
-/* CORE (QUANTUM) */
+/* =========================
+   CARD DESIGN
+========================= */
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 14px;
+
+  background: rgba(15, 20, 35, 0.7);
+  border: 1px solid rgba(56,189,248,0.2);
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 0 25px rgba(56,189,248,0.3);
+}
+
+/* =========================
+   QUANTUM CORE ANIMATION
+========================= */
+
 .core {
   width: 120px;
   height: 120px;
-  border: 2px solid #38bdf8;
   border-radius: 50%;
+
   margin: 20px auto;
-  animation: spin 10s linear infinite;
+
+  border: 2px solid #38bdf8;
+
+  box-shadow:
+    0 0 10px #38bdf8,
+    inset 0 0 20px #38bdf8;
+
+  animation: spin 8s linear infinite;
 }
 
 @keyframes spin {
   100% { transform: rotate(360deg); }
 }
 
-/* GLOW EFFECT */
-h2, .sidebar h1 {
-  text-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
+/* =========================
+   MOBILE RESPONSIVE (FIX IMPORTANT)
+========================= */
+
+@media (max-width: 900px) {
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .content {
+    margin-left: 0;
+    padding: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
 }
