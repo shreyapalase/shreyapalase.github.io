@@ -1207,3 +1207,118 @@ nav a i {
   color: #ffffff;
   text-shadow: 0 0 10px #38bdf8;
 }
+/* =========================
+   PROJECT DASHBOARD STYLE
+========================= */
+
+.project-header {
+  margin-bottom: 20px;
+}
+
+.project-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #38bdf8;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.project-status .dot {
+  width: 8px;
+  height: 8px;
+  background: #38bdf8;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #38bdf8;
+  animation: pulseDot 1.5s infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.6); opacity: 0.4; }
+}
+
+.project-subtitle {
+  color: #9ca3af;
+  font-size: 13px;
+}
+
+/* GRID */
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.project-card {
+  position: relative;
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: rgba(15, 20, 35, 0.7);
+
+  border: 1px solid rgba(56,189,248,0.15);
+
+  backdrop-filter: blur(12px);
+
+  transition: 0.3s ease;
+
+  overflow: hidden;
+}
+
+/* hover glow */
+.project-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,0.5);
+
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.25),
+    0 0 60px rgba(56,189,248,0.1);
+}
+
+/* featured card */
+.project-card.featured {
+  border: 1px solid rgba(56,189,248,0.6);
+  box-shadow: 0 0 30px rgba(56,189,248,0.25);
+}
+
+/* tag */
+.project-tag {
+  font-size: 10px;
+  color: #38bdf8;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+/* text */
+.project-card h3 {
+  color: #e6edf3;
+  margin-bottom: 8px;
+}
+
+.project-card p {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+/* footer tags */
+.project-footer {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-footer span {
+  font-size: 10px;
+  padding: 4px 8px;
+  border-radius: 20px;
+
+  background: rgba(56,189,248,0.1);
+  color: #38bdf8;
+  border: 1px solid rgba(56,189,248,0.2);
+}
