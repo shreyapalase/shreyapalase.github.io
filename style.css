@@ -8,77 +8,80 @@ body {
   background: #05070d;
   color: #e6edf3;
   font-family: "IBM Plex Mono", monospace;
-  overflow-x: hidden;
 }
 
-/* CANVAS FIX */
+/* CANVAS */
 #qbg {
   position: fixed;
   inset: 0;
   z-index: 0;
-  pointer-events: none;
-  mix-blend-mode: screen;
-  opacity: 0.9;
 }
 
-/* CONTENT GLASS */
-.content {
-  margin-left: 280px;
-  padding: 40px;
-  background: rgba(5,7,13,0.65);
-  backdrop-filter: blur(8px);
+/* LAYOUT */
+.layout {
+  display: flex;
+  position: relative;
+  z-index: 2;
 }
 
 /* SIDEBAR */
 .sidebar {
-  width: 280px;
+  width: 260px;
   height: 100vh;
-  position: fixed;
-  padding: 20px;
-  background: rgba(13,17,23,0.85);
+  padding: 25px;
+  background: rgba(10,15,25,0.8);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid rgba(56,189,248,0.3);
+}
+
+.sidebar h1 {
+  font-family: "Orbitron";
+  color: #38bdf8;
 }
 
 /* NAV */
 nav a {
   display: block;
+  margin: 15px 0;
   color: #9ca3af;
-  padding: 10px;
-  text-decoration: none;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
 nav a:hover {
   color: #38bdf8;
+  transform: translateX(5px);
 }
 
-/* SECTION */
-.section {
+/* CONTENT */
+.content {
+  flex: 1;
+  padding: 40px;
+}
+
+/* SECTIONS */
+.page {
   display: none;
-  opacity: 0;
-  transform: translateY(20px);
-  transition: 0.5s;
+  animation: fade 0.6s;
 }
 
-.section.active {
+.page.active {
   display: block;
-  opacity: 1;
-  transform: translateY(0);
 }
 
-/* CARDS */
-.card {
-  padding: 20px;
-  margin: 10px 0;
-  background: rgba(13,17,23,0.7);
-  border-radius: 10px;
-  border: 1px solid rgba(56,189,248,0.2);
+@keyframes fade {
+  from {opacity:0; transform: translateY(20px);}
+  to {opacity:1; transform: translateY(0);}
 }
 
-.card:hover {
-  box-shadow: 0 0 30px rgba(56,189,248,0.4);
+/* HEADINGS */
+h2 {
+  color: #38bdf8;
+  margin-bottom: 15px;
 }
 
-/* QUANTUM CORE */
-.quantum-core {
+/* CORE (QUANTUM) */
+.core {
   width: 120px;
   height: 120px;
   border: 2px solid #38bdf8;
@@ -91,37 +94,7 @@ nav a:hover {
   100% { transform: rotate(360deg); }
 }
 
-/* MOBILE */
-.menu-toggle {
-  display: none;
-}
-
-@media (max-width: 900px) {
-  .sidebar {
-    width: 100%;
-    height: 70px;
-  }
-
-  nav {
-    position: fixed;
-    top: 70px;
-    left: -100%;
-    width: 100%;
-    height: 100vh;
-    background: #05070d;
-    transition: 0.4s;
-  }
-
-  nav.active {
-    left: 0;
-  }
-
-  .content {
-    margin-left: 0;
-    margin-top: 80px;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
+/* GLOW EFFECT */
+h2, .sidebar h1 {
+  text-shadow: 0 0 10px #38bdf8, 0 0 20px #38bdf8;
 }
