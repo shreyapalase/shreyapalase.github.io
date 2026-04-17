@@ -1015,3 +1015,29 @@ nav a i {
 
   line-height: 1.7;
 }
+
+/* =========================
+   GLOBAL WATERMARK (FIXED HUD STYLE)
+========================= */
+
+body::after {
+  content: "© YOUR NAME | Quantum Portfolio";
+
+  position: fixed;
+  bottom: 12px;
+  right: 15px;
+
+  font-size: 11px;
+  font-family: "IBM Plex Mono", monospace;
+
+  color: rgba(56,189,248,0.25);
+
+  letter-spacing: 1px;
+
+  pointer-events: none;
+
+  z-index: 9999;
+
+  text-shadow:
+    0 0 8px rgba(56,189,248,0.2);
+}
