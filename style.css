@@ -1046,3 +1046,37 @@ nav a i {
 
   text-shadow: 0 0 10px rgba(56,189,248,0.6);
 }
+/* =========================
+   SIDEBAR WATERMARK TEXT
+========================= */
+
+.watermark-text {
+  margin-top: 18px;
+  padding: 10px 8px;
+
+  font-size: 11px;
+  font-family: "IBM Plex Mono", monospace;
+
+  color: rgba(56,189,248,0.55);
+
+  text-align: center;
+
+  letter-spacing: 1px;
+
+  line-height: 1.4;
+
+  border-top: 1px solid rgba(56,189,248,0.2);
+
+  opacity: 0.8;
+
+  transition: 0.3s ease;
+}
+
+/* hover glow effect */
+.watermark-text:hover {
+  color: #38bdf8;
+  text-shadow:
+    0 0 10px rgba(56,189,248,0.6),
+    0 0 20px rgba(56,189,248,0.3);
+  opacity: 1;
+}
