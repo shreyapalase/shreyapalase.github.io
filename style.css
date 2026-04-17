@@ -150,9 +150,9 @@ body::before {
 .sidebar {
   width: 280px;
   height: 100vh;
-  padding: 20px;
 
   position: fixed;
+  padding: 20px;
 
   background: rgba(10,15,25,0.75);
   backdrop-filter: blur(16px);
@@ -160,23 +160,21 @@ body::before {
   border-right: 1px solid rgba(56,189,248,0.25);
 
   z-index: 5;
+
+  /* 🔥 IMPORTANT FIX */
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
-/* TITLE */
-#title-text {
-  font-size: 22px;
-  font-family: "Orbitron", sans-serif;
-  color: #38bdf8;
-  text-shadow: 0 0 12px #38bdf8;
+/* optional: better scrollbar for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 4px;
 }
 
-/* SUBTITLE */
-#subtitle-text {
-  font-size: 14px;
-  color: #9ca3af;
-  margin-top: 6px;
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(56,189,248,0.6);
+  border-radius: 10px;
 }
-
 /* =========================
    NAVIGATION (MAGNETIC JARVIS)
 ========================= */
