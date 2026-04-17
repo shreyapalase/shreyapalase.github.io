@@ -899,3 +899,91 @@ nav a i {
   color: #38bdf8;
   text-shadow: 0 0 10px rgba(56,189,248,0.7);
 }
+
+/* =========================
+   ABOUT QUANTUM CARD
+========================= */
+
+.about-card {
+  margin-top: 20px;
+
+  padding: 25px;
+
+  border-radius: 16px;
+
+  background: rgba(15, 20, 35, 0.75);
+
+  border: 1px solid rgba(56,189,248,0.25);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.15),
+    inset 0 0 20px rgba(56,189,248,0.05);
+
+  position: relative;
+
+  overflow: hidden;
+
+  animation: cardFloat 6s ease-in-out infinite;
+}
+
+/* floating effect */
+@keyframes cardFloat {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+/* moving quantum scan line */
+.about-card::before {
+  content: "";
+  position: absolute;
+
+  width: 100%;
+  height: 2px;
+
+  top: 0;
+  left: -100%;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    transparent
+  );
+
+  animation: scanLine 3s linear infinite;
+  opacity: 0.7;
+}
+
+@keyframes scanLine {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* glow border pulse */
+.about-card::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  border-radius: 16px;
+
+  border: 1px solid rgba(56,189,248,0.2);
+
+  animation: borderPulse 3s infinite;
+}
+
+@keyframes borderPulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.3; }
+}
+
+/* text styling inside card */
+.about-card p {
+  margin-bottom: 12px;
+  line-height: 1.7;
+  color: #cbd5e1;
+}
