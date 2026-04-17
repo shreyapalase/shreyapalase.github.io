@@ -200,23 +200,21 @@ let j = 0;
 
 function typeTitle() {
   if (i < titleText.length) {
-    titleEl.textContent += titleText[i];
+    titleEl.innerHTML += titleText.charAt(i);
     i++;
     setTimeout(typeTitle, 120);
   } else {
-    setTimeout(typeSubtitle, 300);
+    setTimeout(typeSubtitle, 400);
   }
 }
 
 function typeSubtitle() {
   if (j < subtitleText.length) {
-    subtitleEl.textContent += subtitleText[j];
+    subtitleEl.innerHTML += subtitleText.charAt(j);
     j++;
-    setTimeout(typeSubtitle, 70);
+    setTimeout(typeSubtitle, 80);
   }
-}
-
-// loop restart
+}// loop restart
 function restart() {
   titleEl.textContent = "";
   subtitleEl.textContent = "";
