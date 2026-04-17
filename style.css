@@ -1020,10 +1020,6 @@ nav a i {
    GLOBAL WATERMARK (FIXED HUD STYLE)
 ========================= */
 
-/* =========================
-   BULLETPROOF WATERMARK FIX
-========================= */
-
 #watermark {
   position: fixed !important;
 
@@ -1037,7 +1033,8 @@ nav a i {
 
   letter-spacing: 1px;
 
-  z-index: 2147483647 !important;
+  /* 🔥 MUST BE HIGHER THAN SIDEBAR */
+  z-index: 999999999 !important;
 
   pointer-events: none !important;
 
