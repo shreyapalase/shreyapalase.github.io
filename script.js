@@ -227,11 +227,36 @@ restart();
 setInterval(restart, 8000);
 
 
+const navLinks = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll(".section");
+
 function showSection(id) {
-  sections.forEach(sec => sec.classList.remove("active"));
+  if (!id) return;
+
+  console.log("Switching to:", id);
+
+  sections.forEach(sec => {
+    sec.classList.remove("active");
+  });
 
   const target = document.getElementById(id);
-  if (target) {
-    target.classList.add("active");
+
+  if (!target) {
+    console.error("Section not found:", id);
+    return;
   }
+
+  target.classList.add("active");
 }
+
+navLinks.forEach(link => {
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const target = link.getAttribute("data-section");
+
+    console.log("Clicked:", target);
+
+    showSection(target);
+  });
+});
