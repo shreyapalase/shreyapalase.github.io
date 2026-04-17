@@ -1,395 +1,63 @@
-/* =========================
-   GOOGLE FONTS (ADD IN HTML)
-========================= */
-/*
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rajdhani:wght@400;500&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
-*/
-
-/* =========================
-   GLOBAL RESET
-========================= */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* MOBILE FIX */
+.menu-toggle {
+  display: none;
+  font-size: 22px;
+  color: #38bdf8;
+  cursor: pointer;
 }
 
-body {
-  background: #05070d;
-  color: #e6edf3;
-  overflow-x: hidden;
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: 70px;
+    flex-direction: row;
+  }
 
-  font-family: "IBM Plex Mono", monospace;
-  line-height: 1.6;
-  letter-spacing: 0.5px;
+  nav {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: 100vh;
+    background: #05070d;
+    transition: 0.4s;
+  }
+
+  nav.active {
+    left: 0;
+  }
+
+  .content {
+    margin-left: 0;
+    margin-top: 90px;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
 }
 
-/* =========================
-   FORCE SINGLE PAGE VIEW (FIX)
-========================= */
-
+/* SECTION ANIMATION */
 .section {
-  display: none !important;
-}
-
-.section.active {
-  display: block !important;
-}
-
-/* =========================
-   TYPOGRAPHY
-========================= */
-h1, h2, h3 {
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 1.5px;
-}
-
-h2 {
-  color: #38bdf8;
-  margin-bottom: 20px;
-}
-
-/* =========================
-   BACKGROUND CANVAS
-========================= */
-#qbg {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -10;
-  background: #05070d;
-}
-
-/* =========================
-   LAYOUT
-========================= */
-.container {
-  display: flex;
-  position: relative;
-  z-index: 2;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-.sidebar {
-  width: 280px;
-  height: 100vh;
-  position: fixed;
-  padding: 25px;
-
-  background: rgba(13, 17, 23, 0.85);
-  backdrop-filter: blur(12px);
-
-  border-right: 1px solid rgba(56,189,248,0.2);
-}
-
-.sidebar h1 {
-  color: #38bdf8;
-  font-size: 20px;
-}
-
-.sidebar h3 {
-  color: #9ca3af;
-  margin-top: 10px;
-  font-size: 14px;
-}
-
-/* =========================
-   NAVIGATION
-========================= */
-nav a {
-  display: block;
-  color: #9ca3af;
-  text-decoration: none;
-  margin: 10px 0;
-  padding: 10px;
-
-  border-left: 2px solid transparent;
-  transition: 0.25s;
-}
-
-nav a:hover {
-  color: #38bdf8;
-  border-left: 2px solid #38bdf8;
-  background: rgba(56,189,248,0.08);
-  transform: translateX(6px);
-}
-
-/* =========================
-   CONTENT
-========================= */
-.content {
-  margin-left: 280px;
-  padding: 40px;
-}
-
-/* =========================
-   GRID LAYOUT (NEW)
-========================= */
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-/* =========================
-   CARDS (MODERN STYLE)
-========================= */
-.card {
-  position: relative;
-  padding: 20px;
-  border-radius: 14px;
-
-  background: linear-gradient(
-    145deg,
-    rgba(13,17,23,0.9),
-    rgba(13,17,23,0.6)
-  );
-
-  backdrop-filter: blur(14px);
-
-  border: 1px solid rgba(56,189,248,0.15);
-
-  transition: all 0.35s ease;
-  overflow: hidden;
-}
-
-/* Hover */
-.card:hover {
-  transform: translateY(-8px) scale(1.02);
-
-  box-shadow:
-    0 0 15px rgba(56,189,248,0.3),
-    0 0 40px rgba(56,189,248,0.15);
-}
-
-/* Animated border */
-.card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 14px;
-
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(56,189,248,0.6),
-    transparent
-  );
-
   opacity: 0;
-  transition: 0.4s;
-}
-
-.card:hover::after {
-  opacity: 1;
-}
-
-/* Scan line */
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 2px;
-
-  background: linear-gradient(
-    90deg,
-    transparent,
-    #38bdf8,
-    transparent
-  );
-
+  transform: translateY(20px);
   transition: 0.5s;
 }
-
-.card:hover::before {
-  left: 100%;
-}
-
-/* Card text */
-.card h3 {
-  margin-bottom: 8px;
-  color: #38bdf8;
-}
-
-.card p {
-  color: #9ca3af;
-  font-size: 14px;
-}
-
-/* =========================
-   SOCIAL LINKS
-========================= */
-.socials {
-  display: flex;
-  gap: 18px;
-  align-items: center;
-}
-
-/* ICON BASE */
-.icon {
-  width: 52px;
-  height: 52px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 14px;
-  text-decoration: none;
-  color: #fff;
-  font-size: 22px;
-  position: relative;
-  background: rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(10px);
-  transition: 0.35s ease;
-  overflow: hidden;
-}
-
-/* ICON ANIMATION FLOAT (idle subtle motion) */
-.icon {
-  animation: float 4s ease-in-out infinite;
-}
-
-/* stagger animation */
-.github { animation-delay: 0s; }
-.linkedin { animation-delay: 0.6s; }
-.medium { animation-delay: 1.2s; }
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-/* ICON HOVER - MAGIC GLOW */
-.icon:hover {
-  transform: scale(1.25) rotate(6deg);
-  box-shadow:
-    0 0 10px #ffffff55,
-    0 0 25px #ffffff33,
-    0 0 45px #ffffff22;
-}
-
-/* SHINE EFFECT */
-.icon::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255,255,255,0.25),
-    transparent
-  );
-  transform: rotate(25deg);
-  opacity: 0;
-  transition: 0.4s;
-}
-
-.icon:hover::before {
-  left: 100%;
+.section.active {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* ICON COLOR GLOW PER BRAND */
-.github:hover {
-  color: #fff;
-  box-shadow: 0 0 20px #ffffffaa, 0 0 40px #ffffff55;
+/* QUANTUM CORE */
+.quantum-core {
+  width: 120px;
+  height: 120px;
+  border: 2px solid #38bdf8;
+  border-radius: 50%;
+  margin: 20px auto;
+  animation: spin 10s linear infinite;
 }
 
-.linkedin:hover {
-  color: #0a66c2;
-  box-shadow: 0 0 20px #0a66c2aa, 0 0 40px #0a66c255;
-}
-
-.medium:hover {
-  color: #ffffff;
-  box-shadow: 0 0 20px #ffffff55, 0 0 40px #ffffff22;
-}
-
-/* CLICK FEEDBACK */
-.icon:active {
-  transform: scale(0.95);
-}
-
-/* =========================
-   QUANTUM SYMBOLS
-========================= */
-.quantum-symbols {
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.quantum-symbols span {
-  position: absolute;
-  font-size: 35px;
-  color: rgba(56, 189, 248, 0.25);
-}
-
-.q1 { top: 10%; left: 70%; }
-.q2 { top: 60%; left: 80%; }
-.q3 { top: 40%; left: 75%; }
-.q4 { top: 80%; left: 60%; }
-.q5 { top: 25%; left: 85%; }
-
-/* =========================
-   SCROLLBAR
-========================= */
-::-webkit-scrollbar {
-  width: 6px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #1f6feb;
-  border-radius: 10px;
-}
-
-/* =========================
-   TEXT SELECTION
-========================= */
-::selection {
-  background: #38bdf8;
-  color: #05070d;
-}
-
-/* =========================
-   JARVIS TYPING HEADER
-========================= */
-
-#title-text {
-  font-size: 30px;
-  color: #38bdf8;
-  font-family: "Orbitron", sans-serif;
-  letter-spacing: 2px;
-  min-height: 30px;
-}
-
-#subtitle-text {
-  font-size: 14px;
-  color: #e6edf3;
-  font-family: "Rajdhani", sans-serif;
-  letter-spacing: 1px;
-  min-height: 20px;
-}
-
-/* blinking cursor effect */
-#title-text::after,
-#subtitle-text::after {
-  content: "|";
-  margin-left: 4px;
-  animation: blink 0.8s infinite;
-  color: #38bdf8;
-}
-
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+@keyframes spin {
+  100% { transform: rotate(360deg); }
 }
