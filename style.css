@@ -1511,3 +1511,8 @@ nav a i {
 .achieve-card a {
   display: inline-block;
 }
+.badge-img {
+  width: 70px;
+  height: 70px;
+  display: block;
+}
