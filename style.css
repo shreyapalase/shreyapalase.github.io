@@ -1512,3 +1512,17 @@ nav a i {
   margin: 0 auto 12px;
   filter: drop-shadow(0 0 8px #00f0ff);
 }
+.glow-badge {
+  filter: drop-shadow(0 0 6px #00f0ff)
+          drop-shadow(0 0 12px #0077ff);
+
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+/* hover effect only for this class */
+.glow-badge:hover {
+  transform: scale(1.12);
+  filter: drop-shadow(0 0 15px #00ffff)
+          drop-shadow(0 0 30px #0077ff)
+          drop-shadow(0 0 45px #00f0ff);
+}
