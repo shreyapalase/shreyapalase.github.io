@@ -1080,3 +1080,104 @@ nav a i {
     0 0 20px rgba(56,189,248,0.3);
   opacity: 1;
 }
+
+/* =========================
+   MODERN SKILLS DASHBOARD
+========================= */
+
+.skills-wrapper {
+  margin-top: 20px;
+}
+
+/* intro text */
+.skills-intro {
+  margin-bottom: 20px;
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+/* GRID LAYOUT */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* SKILL CARD */
+.skill-card {
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: rgba(15, 20, 35, 0.75);
+
+  border: 1px solid rgba(56,189,248,0.2);
+
+  backdrop-filter: blur(12px);
+
+  box-shadow:
+    0 0 15px rgba(56,189,248,0.08);
+
+  transition: all 0.3s ease;
+
+  position: relative;
+
+  overflow: hidden;
+}
+
+/* hover glow */
+.skill-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(56,189,248,0.6);
+
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.25),
+    0 0 60px rgba(56,189,248,0.1);
+}
+
+/* scan line effect */
+.skill-card::before {
+  content: "";
+  position: absolute;
+
+  top: 0;
+  left: -120%;
+
+  width: 120%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    transparent
+  );
+
+  animation: skillScan 3s linear infinite;
+  opacity: 0.6;
+}
+
+@keyframes skillScan {
+  0% { left: -120%; }
+  100% { left: 120%; }
+}
+
+/* text */
+.skill-card h3 {
+  color: #38bdf8;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.skill-card p {
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* special highlighted card */
+.skill-card.highlight {
+  border: 1px solid rgba(56,189,248,0.6);
+  box-shadow: 0 0 25px rgba(56,189,248,0.25);
+}
