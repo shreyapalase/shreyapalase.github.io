@@ -225,3 +225,13 @@ function restart() {
 
 restart();
 setInterval(restart, 8000);
+
+
+function showSection(id) {
+  sections.forEach(sec => sec.classList.remove("active"));
+
+  const target = document.getElementById(id);
+  if (target) {
+    target.classList.add("active");
+  }
+}
