@@ -219,8 +219,8 @@ document.addEventListener("DOMContentLoaded", () => {
    JARVIS TYPEWRITER EFFECT
 ========================= */
 
-const titleText = "YOUR NAME";
-const subtitleText = "Quantum System Online";
+const titleText = "Shreya Palase";
+const subtitleText = "Quantum Computing Enthusiast";
 
 const titleEl = document.getElementById("title-text");
 const subtitleEl = document.getElementById("subtitle-text");
