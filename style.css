@@ -1512,7 +1512,10 @@ nav a i {
   display: inline-block;
 }
 .badge-img {
-  width: 70px;
-  height: 70px;
+  width: 90px;
+  height: 90px;
+  object-fit: contain;
   display: block;
+  margin: 0 auto 12px;
+  filter: drop-shadow(0 0 8px #00f0ff);
 }
