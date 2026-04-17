@@ -170,23 +170,49 @@ animate();
    NAVIGATION SYSTEM (FIXED)
 ========================= */
 
-const navLinks = document.querySelectorAll("nav a");
-const sections = document.querySelectorAll(".section");
+// =========================
+// SAFE JARVIS NAVIGATION SYSTEM
+// =========================
 
-navLinks.forEach(link => {
-  link.addEventListener("click", (e) => {
-    e.preventDefault();
+document.addEventListener("DOMContentLoaded", () => {
 
-    const target = link.getAttribute("data-section");
+  const navLinks = document.querySelectorAll("nav a");
+  const sections = document.querySelectorAll(".section");
 
-    sections.forEach(sec => sec.classList.remove("active"));
+  function showSection(id) {
+    let found = false;
 
-    const el = document.getElementById(target);
+    sections.forEach(sec => {
+      sec.classList.remove("active");
 
-    if (el) {
-      el.classList.add("active");
+      if (sec.id === id) {
+        sec.classList.add("active");
+        found = true;
+      }
+    });
+
+    // fallback safety (prevents "blank screen" bug)
+    if (!found) {
+      document.querySelector("#about")?.classList.add("active");
+      console.warn("Section not found:", id);
     }
+  }
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+
+      const target = link.dataset.section;
+
+      if (!target) {
+        console.warn("Missing data-section on:", link);
+        return;
+      }
+
+      showSection(target);
+    });
   });
+
 });
 
 /* =========================
