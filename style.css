@@ -1382,3 +1382,117 @@ nav a i {
     box-shadow: 0 0 20px rgba(56,189,248,0.25);
   }
 }
+
+/* =========================
+   ACHIEVEMENTS QUANTUM UI
+========================= */
+
+#achievements {
+  position: relative;
+}
+
+/* GRID */
+.achieve-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+
+/* CARD */
+.achieve-card {
+  position: relative;
+  padding: 20px;
+  border-radius: 16px;
+
+  background: rgba(12, 18, 32, 0.65);
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(56,189,248,0.15);
+
+  overflow: hidden;
+
+  transition: 0.35s ease;
+
+  box-shadow: 0 0 18px rgba(0,0,0,0.4);
+}
+
+/* HOVER */
+.achieve-card:hover {
+  transform: translateY(-8px) scale(1.03);
+
+  border-color: rgba(56,189,248,0.6);
+
+  box-shadow:
+    0 0 25px rgba(56,189,248,0.25),
+    0 0 50px rgba(56,189,248,0.15);
+}
+
+/* ICON */
+.badge-icon {
+  font-size: 26px;
+  color: #38bdf8;
+  margin-bottom: 10px;
+
+  text-shadow: 0 0 10px rgba(56,189,248,0.6);
+}
+
+/* TITLE */
+.achieve-card h3 {
+  color: #e6edf3;
+  margin-bottom: 8px;
+}
+
+/* TEXT */
+.achieve-card p {
+  font-size: 13px;
+  color: #9ca3af;
+  line-height: 1.5;
+}
+
+/* STATUS TAG */
+.status {
+  display: inline-block;
+  margin-top: 10px;
+
+  font-size: 10px;
+  letter-spacing: 1px;
+
+  padding: 4px 10px;
+  border-radius: 20px;
+
+  color: #38bdf8;
+  background: rgba(56,189,248,0.08);
+
+  border: 1px solid rgba(56,189,248,0.25);
+}
+
+/* SPECIAL HIGHLIGHT CARD */
+.achieve-card.highlight {
+  border-color: rgba(255,255,255,0.25);
+  box-shadow: 0 0 30px rgba(56,189,248,0.2);
+}
+
+/* SCANNING EFFECT */
+.achieve-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 2px;
+
+  background: linear-gradient(
+    90deg,
+    transparent,
+    #38bdf8,
+    transparent
+  );
+
+  animation: scanMove 3s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { left: -120%; }
+  100% { left: 120%; }
+}
