@@ -149,9 +149,13 @@ body::before {
 
 .sidebar {
   width: 280px;
+
+  /* IMPORTANT CHANGE */
   height: 100vh;
+  max-height: 100vh;
 
   position: fixed;
+
   padding: 20px;
 
   background: rgba(10,15,25,0.75);
@@ -161,19 +165,13 @@ body::before {
 
   z-index: 5;
 
-  /* 🔥 IMPORTANT FIX */
+  /* FORCE SCROLL */
   overflow-y: auto;
   overflow-x: hidden;
-}
 
-/* optional: better scrollbar for sidebar */
-.sidebar::-webkit-scrollbar {
-  width: 4px;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-  background: rgba(56,189,248,0.6);
-  border-radius: 10px;
+  /* IMPORTANT FOR FLEX CONTENT ISSUES */
+  display: flex;
+  flex-direction: column;
 }
 /* =========================
    NAVIGATION (MAGNETIC JARVIS)
