@@ -1181,3 +1181,8 @@ nav a i {
   border: 1px solid rgba(56,189,248,0.6);
   box-shadow: 0 0 25px rgba(56,189,248,0.25);
 }
+
+.section {
+  display: block !important;
+  border: 2px solid red;
+}
