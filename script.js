@@ -1,82 +1,164 @@
+/* =========================
+   CANVAS SETUP
+========================= */
+
 const canvas = document.getElementById("qbg");
 const ctx = canvas.getContext("2d");
 
-function resize(){
+function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }
 resize();
-window.onresize = resize;
+window.addEventListener("resize", resize);
 
-/* PARTICLES */
-let particles = [];
+/* =========================
+   PARTICLES
+========================= */
 
-for(let i=0;i<80;i++){
+const particles = [];
+const count = 90;
+
+for (let i = 0; i < count; i++) {
   particles.push({
-    x: Math.random()*canvas.width,
-    y: Math.random()*canvas.height,
-    vx:(Math.random()-0.5),
-    vy:(Math.random()-0.5)
+    x: Math.random() * window.innerWidth,
+    y: Math.random() * window.innerHeight,
+    vx: (Math.random() - 0.5) * 1.2,
+    vy: (Math.random() - 0.5) * 1.2,
+    size: Math.random() * 2 + 1
   });
 }
 
-/* CIRCUIT LINES */
-let lines = [];
-for(let i=0;i<5;i++){
-  lines.push({
-    y: (i+1)*canvas.height/6,
-    offset: Math.random()*200
+/* =========================
+   QUANTUM CIRCUIT LINES
+========================= */
+
+const circuits = [];
+for (let i = 0; i < 6; i++) {
+  circuits.push({
+    y: (i + 1) * window.innerHeight / 7,
+    offset: Math.random() * 500
   });
 }
 
-/* ANIMATE */
-function animate(){
+/* =========================
+   MOUSE INTERACTION
+========================= */
 
-  ctx.fillStyle = "rgba(5,7,13,0.1)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
+let mouse = { x: 0, y: 0 };
 
-  /* PARTICLES */
-  particles.forEach(p=>{
+window.addEventListener("mousemove", (e) => {
+  mouse.x = e.clientX;
+  mouse.y = e.clientY;
+});
+
+/* =========================
+   CLICK ENERGY BURST
+========================= */
+
+window.addEventListener("click", (e) => {
+  particles.forEach(p => {
+    let dx = p.x - e.clientX;
+    let dy = p.y - e.clientY;
+    let dist = Math.sqrt(dx * dx + dy * dy) || 1;
+
+    p.vx += dx / dist * 2;
+    p.vy += dy / dist * 2;
+  });
+});
+
+/* =========================
+   ANIMATION LOOP
+========================= */
+
+function animate() {
+
+  /* TRAIL EFFECT (IMPORTANT) */
+  ctx.fillStyle = "rgba(5,7,13,0.12)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+  /* =====================
+     PARTICLES
+  ===================== */
+
+  particles.forEach(p => {
+
     p.x += p.vx;
     p.y += p.vy;
 
+    // mouse attraction (magnetic quantum field)
+    let dx = mouse.x - p.x;
+    let dy = mouse.y - p.y;
+    let dist = Math.sqrt(dx * dx + dy * dy);
+
+    if (dist < 140) {
+      p.x -= dx * 0.01;
+      p.y -= dy * 0.01;
+    }
+
+    // draw particle
     ctx.beginPath();
-    ctx.arc(p.x,p.y,2,0,Math.PI*2);
-    ctx.fillStyle = "#38bdf8";
+    ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+    ctx.fillStyle = "rgba(56,189,248,0.9)";
     ctx.fill();
   });
 
-  /* CONNECTIONS */
-  for(let i=0;i<particles.length;i++){
-    for(let j=i+1;j<particles.length;j++){
-      let dx=particles[i].x-particles[j].x;
-      let dy=particles[i].y-particles[j].y;
-      let d=Math.sqrt(dx*dx+dy*dy);
+  /* =====================
+     CONNECTIONS (ENTANGLEMENT)
+  ===================== */
 
-      if(d<120){
-        ctx.strokeStyle="rgba(56,189,248,0.1)";
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+
+      let dx = particles[i].x - particles[j].x;
+      let dy = particles[i].y - particles[j].y;
+      let dist = Math.sqrt(dx * dx + dy * dy);
+
+      if (dist < 130) {
+
+        ctx.strokeStyle = "rgba(56,189,248,0.12)";
+        ctx.lineWidth = 1;
+
         ctx.beginPath();
-        ctx.moveTo(particles[i].x,particles[i].y);
-        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.moveTo(particles[i].x, particles[i].y);
+        ctx.lineTo(particles[j].x, particles[j].y);
         ctx.stroke();
       }
     }
   }
 
-  /* QUANTUM CIRCUIT */
-  lines.forEach(l=>{
-    ctx.strokeStyle="rgba(56,189,248,0.3)";
+  /* =====================
+     QUANTUM CIRCUIT SYSTEM
+  ===================== */
+
+  circuits.forEach(c => {
+
+    // base wire
+    ctx.strokeStyle = "rgba(56,189,248,0.25)";
+    ctx.lineWidth = 1.5;
+
     ctx.beginPath();
-    ctx.moveTo(0,l.y);
-    ctx.lineTo(canvas.width,l.y);
+    ctx.moveTo(0, c.y);
+    ctx.lineTo(canvas.width, c.y);
     ctx.stroke();
 
-    let x=(Date.now()*0.3 + l.offset)%canvas.width;
+    // moving quantum signal
+    let x = (Date.now() * 0.25 + c.offset) % canvas.width;
+
+    // glowing pulse
+    ctx.beginPath();
+    ctx.arc(x, c.y, 5, 0, Math.PI * 2);
+    ctx.fillStyle = "#38bdf8";
+    ctx.fill();
+
+    // trail beam
+    ctx.strokeStyle = "rgba(56,189,248,0.6)";
+    ctx.lineWidth = 2;
 
     ctx.beginPath();
-    ctx.arc(x,l.y,4,0,Math.PI*2);
-    ctx.fillStyle="#38bdf8";
-    ctx.fill();
+    ctx.moveTo(x - 40, c.y);
+    ctx.lineTo(x, c.y);
+    ctx.stroke();
   });
 
   requestAnimationFrame(animate);
@@ -84,27 +166,64 @@ function animate(){
 
 animate();
 
-/* NAV */
-function show(id){
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(id).classList.add("active");
+/* =========================
+   NAVIGATION SYSTEM (FIXED)
+========================= */
+
+document.querySelectorAll("nav a").forEach(link => {
+
+  link.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    const id = link.getAttribute("data-section");
+
+    document.querySelectorAll(".section").forEach(sec => {
+      sec.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+  });
+});
+
+/* =========================
+   JARVIS TYPEWRITER EFFECT
+========================= */
+
+const titleText = "YOUR NAME";
+const subtitleText = "Quantum System Online";
+
+const titleEl = document.getElementById("title-text");
+const subtitleEl = document.getElementById("subtitle-text");
+
+let i = 0;
+let j = 0;
+
+function typeTitle() {
+  if (i < titleText.length) {
+    titleEl.textContent += titleText[i];
+    i++;
+    setTimeout(typeTitle, 120);
+  } else {
+    setTimeout(typeSubtitle, 300);
+  }
 }
 
-/* JARVIS TYPING */
-let title="YOUR NAME";
-let sub="Quantum System Online";
-
-let i=0,j=0;
-
-function type(){
-  document.getElementById("title").textContent = title.slice(0,i++);
-  if(i<=title.length) setTimeout(type,100);
-  else subType();
+function typeSubtitle() {
+  if (j < subtitleText.length) {
+    subtitleEl.textContent += subtitleText[j];
+    j++;
+    setTimeout(typeSubtitle, 70);
+  }
 }
 
-function subType(){
-  document.getElementById("subtitle").textContent = sub.slice(0,j++);
-  if(j<=sub.length) setTimeout(subType,50);
+// loop restart
+function restart() {
+  titleEl.textContent = "";
+  subtitleEl.textContent = "";
+  i = 0;
+  j = 0;
+  typeTitle();
 }
 
-type();
+restart();
+setInterval(restart, 8000);
