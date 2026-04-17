@@ -170,18 +170,22 @@ animate();
    NAVIGATION SYSTEM (FIXED)
 ========================= */
 
-document.querySelectorAll("nav a").forEach(link => {
+const navLinks = document.querySelectorAll("nav a");
+const sections = document.querySelectorAll(".section");
 
+navLinks.forEach(link => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
 
-    const id = link.getAttribute("data-section");
+    const target = link.getAttribute("data-section");
 
-    document.querySelectorAll(".section").forEach(sec => {
-      sec.classList.remove("active");
-    });
+    sections.forEach(sec => sec.classList.remove("active"));
 
-    document.getElementById(id).classList.add("active");
+    const el = document.getElementById(target);
+
+    if (el) {
+      el.classList.add("active");
+    }
   });
 });
 
