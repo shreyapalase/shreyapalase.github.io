@@ -835,3 +835,9 @@ h2 {
 
   text-shadow: 0 0 10px rgba(56,189,248,0.6);
 }
+html, body {
+  height: 100%;
+}
+.sidebar > * {
+  flex-shrink: 0;
+}
