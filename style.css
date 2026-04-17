@@ -904,46 +904,61 @@ nav a i {
    ABOUT QUANTUM CARD
 ========================= */
 
+/* =========================
+   ABOUT CARD (NEON GLASS PANEL FIXED)
+========================= */
+
 .about-card {
   margin-top: 20px;
 
-  padding: 25px;
+  padding: 28px;
 
-  border-radius: 16px;
+  border-radius: 18px;
 
-  background: rgba(15, 20, 35, 0.75);
+  /* STRONG GLASS LAYER */
+  background: rgba(10, 14, 25, 0.85);
 
-  border: 1px solid rgba(56,189,248,0.25);
+  /* REAL DEPTH SEPARATION */
+  backdrop-filter: blur(18px);
 
-  backdrop-filter: blur(12px);
+  /* NEON BORDER */
+  border: 1px solid rgba(56,189,248,0.6);
 
+  /* STRONG GLOW OUTER */
   box-shadow:
-    0 0 20px rgba(56,189,248,0.15),
-    inset 0 0 20px rgba(56,189,248,0.05);
+    0 0 15px rgba(56,189,248,0.6),
+    0 0 40px rgba(56,189,248,0.25),
+    inset 0 0 25px rgba(56,189,248,0.15);
 
   position: relative;
 
   overflow: hidden;
 
-  animation: cardFloat 6s ease-in-out infinite;
+  z-index: 10;
+
+  /* subtle float */
+  animation: aboutFloat 5s ease-in-out infinite;
 }
 
-/* floating effect */
-@keyframes cardFloat {
+/* FLOAT */
+@keyframes aboutFloat {
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-6px); }
 }
 
-/* moving quantum scan line */
+/* =========================
+   TOP NEON SCAN GLOW LINE
+========================= */
+
 .about-card::before {
   content: "";
   position: absolute;
 
-  width: 100%;
-  height: 2px;
-
   top: 0;
-  left: -100%;
+  left: -120%;
+
+  width: 120%;
+  height: 2px;
 
   background: linear-gradient(
     90deg,
@@ -952,38 +967,51 @@ nav a i {
     transparent
   );
 
-  animation: scanLine 3s linear infinite;
-  opacity: 0.7;
+  animation: scanMove 2.8s linear infinite;
+  opacity: 0.9;
 }
 
-@keyframes scanLine {
-  0% { left: -100%; }
-  100% { left: 100%; }
+@keyframes scanMove {
+  0% { left: -120%; }
+  100% { left: 120%; }
 }
 
-/* glow border pulse */
+/* =========================
+   BORDER ENERGY PULSE
+========================= */
+
 .about-card::after {
   content: "";
-
   position: absolute;
   inset: 0;
 
-  border-radius: 16px;
+  border-radius: 18px;
 
-  border: 1px solid rgba(56,189,248,0.2);
+  border: 1px solid rgba(56,189,248,0.3);
 
-  animation: borderPulse 3s infinite;
+  box-shadow:
+    0 0 20px rgba(56,189,248,0.3);
+
+  animation: borderPulse 2.5s infinite;
 }
 
 @keyframes borderPulse {
   0% { opacity: 0.3; }
-  50% { opacity: 0.8; }
+  50% { opacity: 0.9; }
   100% { opacity: 0.3; }
 }
 
-/* text styling inside card */
+/* =========================
+   TEXT INSIDE CARD
+========================= */
+
 .about-card p {
-  margin-bottom: 12px;
-  line-height: 1.7;
+  position: relative;
+  z-index: 2;
+
+  margin-bottom: 14px;
+
   color: #cbd5e1;
+
+  line-height: 1.7;
 }
