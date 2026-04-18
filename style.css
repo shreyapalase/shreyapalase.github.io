@@ -1561,3 +1561,90 @@ nav a i {
   border-color: #00ffff;
 }
 
+.neon-btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  margin-top: 15px;
+  color: #00f7ff;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 12px;
+  overflow: hidden;
+  transition: 0.2s;
+  border: 1px solid #00f7ff;
+  border-radius: 6px;
+}
+
+.neon-btn:hover {
+  color: #000;
+  background: #00f7ff;
+  box-shadow: 0 0 10px #00f7ff, 0 0 40px #00f7ff, 0 0 80px #00f7ff;
+}
+
+/* animated borders */
+.neon-btn span {
+  position: absolute;
+  display: block;
+}
+
+.neon-btn span:nth-child(1) {
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f7ff);
+  animation: animate1 1.5s linear infinite;
+}
+
+.neon-btn span:nth-child(2) {
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #00f7ff);
+  animation: animate2 1.5s linear infinite;
+  animation-delay: 0.375s;
+}
+
+.neon-btn span:nth-child(3) {
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, #00f7ff);
+  animation: animate3 1.5s linear infinite;
+  animation-delay: 0.75s;
+}
+
+.neon-btn span:nth-child(4) {
+  bottom: -100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, #00f7ff);
+  animation: animate4 1.5s linear infinite;
+  animation-delay: 1.125s;
+}
+
+/* keyframes */
+@keyframes animate1 {
+  0% { left: -100%; }
+  50%,100% { left: 100%; }
+}
+
+@keyframes animate2 {
+  0% { top: -100%; }
+  50%,100% { top: 100%; }
+}
+
+@keyframes animate3 {
+  0% { right: -100%; }
+  50%,100% { right: 100%; }
+}
+
+@keyframes animate4 {
+  0% { bottom: -100%; }
+  50%,100% { bottom: 100%; }
+}
