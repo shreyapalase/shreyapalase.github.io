@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
 ========================= */
 
 const titleText = "Shreya Palase";
-const subtitleText = "Quantum Computing Enthusiast";
+const subtitleText = "Quantum Computing Enthusiast | Quantum Algorithm | Qiskit";
 
 const titleEl = document.getElementById("title-text");
 const subtitleEl = document.getElementById("subtitle-text");
