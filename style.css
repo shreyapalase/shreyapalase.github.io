@@ -1776,3 +1776,11 @@ body {
   opacity: 0.7;
   z-index: 0;
 }
+
+/* GRID CONTAINER */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  padding: 40px;
+}
