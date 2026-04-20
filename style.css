@@ -1654,7 +1654,17 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 
-/* Card Base */
+/* CENTER THE CARD (important) */
+body {
+  background: #05070d;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* CARD */
 .quantum-card {
   position: relative;
   width: 320px;
@@ -1662,19 +1672,19 @@ body {
   border-radius: 16px;
   overflow: hidden;
   color: #e6f7ff;
-  backdrop-filter: blur(20px);
-  background: rgba(10, 15, 30, 0.6);
+  background: rgba(10, 15, 30, 0.85);
   transition: 0.4s ease;
 }
 
-/* Holographic animated background */
+/* HOLOGRAPHIC BACKGROUND */
 .quantum-bg {
   position: absolute;
   inset: 0;
   background: linear-gradient(120deg, #00f0ff, #8a2eff, #00ffa6);
-  opacity: 0.08;
-  filter: blur(40px);
+  opacity: 0.15; /* increased so you can SEE it */
+  filter: blur(50px);
   animation: holoShift 8s linear infinite;
+  z-index: 0;
 }
 
 @keyframes holoShift {
@@ -1683,26 +1693,24 @@ body {
   100% { transform: rotate(360deg) scale(1.2); }
 }
 
-/* Title */
+/* TEXT */
 .quantum-card h3 {
   font-size: 18px;
-  line-height: 1.4;
   margin-bottom: 20px;
-  z-index: 2;
   position: relative;
+  z-index: 2;
 }
 
-/* Link Button */
+/* LINK */
 .quantum-link {
   text-decoration: none;
   color: #00f0ff;
   font-weight: bold;
   position: relative;
   z-index: 2;
-  transition: 0.3s;
 }
 
-/* Magical underline pulse */
+/* UNDERLINE ANIMATION */
 .quantum-link::after {
   content: '';
   position: absolute;
@@ -1720,14 +1728,15 @@ body {
   100% { opacity: 0.2; transform: scaleX(0.5); }
 }
 
-/* Scanline sweep effect (Jarvis feel) */
+/* SCAN LINE */
 .scanline {
   position: absolute;
   width: 100%;
   height: 2px;
-  background: rgba(0,255,255,0.4);
+  background: rgba(0,255,255,0.6);
   top: -10%;
-  animation: scanMove 4s linear infinite;
+  animation: scanMove 3s linear infinite;
+  z-index: 2;
 }
 
 @keyframes scanMove {
@@ -1735,35 +1744,35 @@ body {
   100% { top: 110%; }
 }
 
-/* Hover interaction */
-.quantum-card:hover {
-  transform: translateY(-10px) scale(1.02);
+/* PARTICLES (VISIBLE NOW) */
+.quantum-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#00f0ff 1px, transparent 1px);
+  background-size: 18px 18px;
+  opacity: 0.08;
+  animation: particles 8s linear infinite;
+  z-index: 1;
 }
 
-/* Reactive glow aura */
+@keyframes particles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-80px); }
+}
+
+/* HOVER GLOW */
+.quantum-card:hover {
+  transform: translateY(-10px) scale(1.03);
+}
+
 .quantum-card:hover::before {
   content: '';
   position: absolute;
   inset: -2px;
   border-radius: 16px;
   background: linear-gradient(45deg, #00f0ff, #8a2eff, #00ffa6);
-  filter: blur(12px);
-  opacity: 0.6;
+  filter: blur(15px);
+  opacity: 0.7;
   z-index: 0;
-}
-
-/* Subtle particle sparkle */
-.quantum-card::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(#00f0ff 1px, transparent 1px);
-  background-size: 20px 20px;
-  opacity: 0.05;
-  animation: particles 10s linear infinite;
-}
-
-@keyframes particles {
-  from { transform: translateY(0); }
-  to { transform: translateY(-100px); }
 }
