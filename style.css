@@ -1649,3 +1649,121 @@ nav a i {
   50%,100% { bottom: 100%; }
 }
 
+body {
+  background: #05070d;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+/* Card Base */
+.quantum-card {
+  position: relative;
+  width: 320px;
+  padding: 25px;
+  border-radius: 16px;
+  overflow: hidden;
+  color: #e6f7ff;
+  backdrop-filter: blur(20px);
+  background: rgba(10, 15, 30, 0.6);
+  transition: 0.4s ease;
+}
+
+/* Holographic animated background */
+.quantum-bg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, #00f0ff, #8a2eff, #00ffa6);
+  opacity: 0.08;
+  filter: blur(40px);
+  animation: holoShift 8s linear infinite;
+}
+
+@keyframes holoShift {
+  0% { transform: rotate(0deg) scale(1.2); }
+  50% { transform: rotate(180deg) scale(1.4); }
+  100% { transform: rotate(360deg) scale(1.2); }
+}
+
+/* Title */
+.quantum-card h3 {
+  font-size: 18px;
+  line-height: 1.4;
+  margin-bottom: 20px;
+  z-index: 2;
+  position: relative;
+}
+
+/* Link Button */
+.quantum-link {
+  text-decoration: none;
+  color: #00f0ff;
+  font-weight: bold;
+  position: relative;
+  z-index: 2;
+  transition: 0.3s;
+}
+
+/* Magical underline pulse */
+.quantum-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00f0ff, transparent);
+  animation: pulseLine 2s infinite;
+}
+
+@keyframes pulseLine {
+  0% { opacity: 0.2; transform: scaleX(0.5); }
+  50% { opacity: 1; transform: scaleX(1); }
+  100% { opacity: 0.2; transform: scaleX(0.5); }
+}
+
+/* Scanline sweep effect (Jarvis feel) */
+.scanline {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: rgba(0,255,255,0.4);
+  top: -10%;
+  animation: scanMove 4s linear infinite;
+}
+
+@keyframes scanMove {
+  0% { top: -10%; }
+  100% { top: 110%; }
+}
+
+/* Hover interaction */
+.quantum-card:hover {
+  transform: translateY(-10px) scale(1.02);
+}
+
+/* Reactive glow aura */
+.quantum-card:hover::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, #00f0ff, #8a2eff, #00ffa6);
+  filter: blur(12px);
+  opacity: 0.6;
+  z-index: 0;
+}
+
+/* Subtle particle sparkle */
+.quantum-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(#00f0ff 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.05;
+  animation: particles 10s linear infinite;
+}
+
+@keyframes particles {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
